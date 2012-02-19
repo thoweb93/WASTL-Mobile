@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/RLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#cdc9c9"
+    >
+    
+     <!-- Top header, contains headline and two images -->
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"  
+	    android:id="@+id/layLinearTop"
+	    android:layout_alignParentTop="true"
+	    android:background="#696969"
+	    >	  	    
+	    	<!-- headline -->
+		    <TextView android:textAppearance="?android:attr/textAppearanceLarge" 
+		    android:text="WASTL Mobile" 
+		    android:layout_height="58dp"
+		    android:layout_width="wrap_content"
+		    android:gravity="center_vertical"
+		    android:id="@+id/tbHeadline"	 
+		    android:typeface="serif"
+		    android:textStyle="bold"
+		    android:textColor="#ffffff"	    
+		    />      
+	    
+	    	<!-- Images -->
+	    	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"  
+		    android:id="@+id/layLinearTopRight"
+		    android:gravity="right"		    
+		    >			    
+			    <ImageView 
+			   	android:id="@+id/image_badge"
+			   	android:src="@drawable/logo"
+			   	android:layout_width="58sp"
+			  	android:layout_height="58sp"		  	  
+			  	/>
+			 
+			 </LinearLayout>
+			  	
+	    </LinearLayout>
+    
+    <TextView android:textAppearance="?android:attr/textAppearanceLarge" 
+    android:text="Feuerwehr" 
+    android:layout_width="match_parent" 
+    android:gravity="center_vertical|center_horizontal" 
+    android:layout_height="58dp" 
+    android:textColor="#b22222"
+    android:id="@+id/tvFireDepartment"
+    android:layout_below="@+id/layLinearTop">
+    </TextView>
+
+	 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/tvFireDepartment"
+    android:id="@+id/layLinear"
+    android:layout_alignLeft="@+id/tvFireDepartment"
+    android:background="@drawable/border_background"
+	android:padding="10dp"
+	android:layout_margin="10dp"
+    >
+    <TextView  
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+    	android:textSize="18sp"
+        android:text="Standort: "
+        android:textColor="#000000"
+        android:id="@+id/textView_Location"
+    />
+    <TextView  
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+    	android:textSize="18sp" 
+        android:text="Telefonnr: "
+        android:textColor="#000000"
+        android:layout_alignLeft="@+id/tvFF"
+        android:id="@+id/textView_MobilePhone"
+        android:inputType="phone"
+    />   
+    
+    
+     <com.google.android.maps.MapView
+     android:layout_width="fill_parent"
+     android:layout_height="fill_parent"
+     android:clickable="true"
+     android:id="@+id/mapview"
+     android:apiKey="0FBAvY4pUcSZ8kcyrAXjHbedNQeTunktJs4rRUg"
+     android:layout_alignParentRight="true"
+     android:layout_margin="10dp"
+     />
+            
+	</LinearLayout>
+</RelativeLayout>

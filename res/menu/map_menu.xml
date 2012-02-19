@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    
+    
+    <group android:id="@+id/group_showlegend"><item android:id="@+id/item_showlegend_low" android:enabled="false" android:checked="false" android:checkable="false" android:title="Grün:     1-2 Feuerwehren im Einsatz"></item><item android:id="@+id/item_showlegend_middle" android:enabled="false" android:checked="true" android:checkable="false" android:title="Gelb:     3-5 Feuerwehren im Einsatz"></item><item android:checked="false" android:checkable="false" android:id="@+id/item_showlegend_high" android:enabled="false" android:title="Rot:     mehr als 5 Feuerwehren im Einsatz"></item></group>
+    
+</menu>

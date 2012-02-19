@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ArrayOfBAZ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+	<BAZ>
+		<ID>1023</ID>
+		<Name>LWZ</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1006</ID>
+		<Name>BAZ Amstetten</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1007</ID>
+		<Name>BAZ Baden</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1008</ID>
+		<Name>BAZ Bruck/Leitha</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1009</ID>
+		<Name>BAZ Gänsendorf</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1010</ID>
+		<Name>BAZ Gmünd</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1013</ID>
+		<Name>AAZ Klosterneuburg</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1021</ID>
+		<Name>AAZ Purkersdorf</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1004</ID>
+		<Name>AAZ Schwechat</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1011</ID>
+		<Name>BAZ Hollabrunn</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1012</ID>
+		<Name>BAZ Horn</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1026</ID>
+		<Name>BAZ Stockerau</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1000</ID>
+		<Name>BAZ Krems/Donau</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1014</ID>
+		<Name>BAZ Lilienfeld</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1015</ID>
+		<Name>BAZ Melk</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1003</ID>
+		<Name>BAZ Mistelbach</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1002</ID>
+		<Name>BAZ Mödling</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1005</ID>
+		<Name>BAZ Neunkirchen</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1001</ID>
+		<Name>BAZ ST. Pölten</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1016</ID>
+		<Name>BAZ Scheibbs</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1028</ID>
+		<Name>BAZ Tulln</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1027</ID>
+		<Name>BAZ Waidhofen/Thaya</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1019</ID>
+		<Name>BAZ Wiener Neustadt</Name>
+	</BAZ>
+	
+	<BAZ>
+		<ID>1020</ID>
+		<Name>BAZ Zwettl</Name>
+	</BAZ>
+
+</ArrayOfBAZ>

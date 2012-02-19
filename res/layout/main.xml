@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    android:id="@+id/RLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#cdc9c9"
+    >    
+        	
+        <!-- Top header, contains headline and two images -->
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"  
+	    android:id="@+id/layLinearTop"
+	    android:layout_alignParentTop="true"
+	    android:background="#696969"	    
+	    >	  	    
+	    	<!-- headline -->
+		    <TextView android:textAppearance="?android:attr/textAppearanceLarge" 
+		    android:text="WASTL Mobile"		    
+		    android:layout_height="58dp"
+		    android:layout_width="wrap_content"
+		    android:gravity="center_vertical"
+		    android:id="@+id/tbHeadline"	 
+		    android:typeface="serif"
+		    android:textStyle="bold"
+		    android:textColor="#ffffff"  
+		    />      
+	    
+		    <!-- Images -->
+	    	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"  
+		    android:id="@+id/layLinearTopRight"
+		    android:gravity="right"		    
+		    >			    
+			    <ImageView 
+			   	android:id="@+id/image_badge"
+			   	android:src="@drawable/logo"
+			   	android:layout_width="58sp"
+			  	android:layout_height="58sp"		  	  
+			  	/>
+			 
+			 </LinearLayout>		 	
+			  	
+	    </LinearLayout>
+    
+    	<!-- Information textViews -->
+	    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/layLinearTop"
+	    android:id="@+id/layLinear"
+	    android:layout_alignLeft="@+id/tbHeadline"
+	    android:background="@drawable/border_background"
+	    android:padding="10dp"
+	    android:layout_margin="10dp"
+	    >
+		    <TextView  
+		        android:layout_width="fill_parent" 
+		        android:layout_height="wrap_content"
+		        android:padding="15dp"
+		    	android:textSize="18sp"
+		        android:text="Einsätze insgesamt"
+		        android:textColor="#000000"
+		        android:typeface="serif"		        
+		        android:id="@+id/textView_missionCount"
+		    />
+		    <TextView  
+		        android:layout_width="fill_parent" 
+		        android:layout_height="wrap_content"
+		        android:padding="15dp"
+		    	android:textSize="18sp" 
+		        android:text="FF insgesamt"
+		        android:layout_alignLeft="@+id/tvFF"
+		        android:textColor="#000000"
+		        android:typeface="serif"		        
+		        android:id="@+id/textView_fireDepartmentCount"
+		    />
+		    <TextView  
+		        android:layout_width="fill_parent" 
+		        android:layout_height="wrap_content"
+		        android:padding="15dp"
+		    	android:textSize="18sp" 
+		        android:text="Bezirke im Einsatz: " 
+		        android:textColor="#000000"  
+		        android:typeface="serif"		          
+		        android:id="@+id/textView_districts"
+		    />
+	    
+	    </LinearLayout>
+    
+    	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:orientation="vertical"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_below="@+id/layLinear"
+		    android:id="@+id/layLinearBottom"
+		    android:gravity="center_vertical|center_horizontal"
+		    android:layout_margin="10dp"  	
+		    >
+    
+		    <!-- Bottom buttons -->
+		    <Button android:text="Einsatzkarte" 
+		    android:layout_width="178dp" 
+		    android:id="@+id/buttonMap" 
+		    android:layout_height="wrap_content" 			
+			android:typeface="serif"		
+		    >
+		    </Button>
+		    
+		    <Button android:text="Aktuelle Einsätze" 
+		    android:layout_width="178dp" 
+		    android:id="@+id/buttonMission" 
+		    android:layout_height="wrap_content"    		    
+		    android:typeface="serif"	    
+		    >
+		    </Button>
+		    
+		    <Button android:layout_width="178dp" 
+		    android:text="Feuerwehren dursuchen" 
+		    android:id="@+id/buttonBrowse" 
+		    android:layout_height="wrap_content" 		    
+		    android:typeface="serif"	    
+		    >
+		    </Button>
+    
+  		</LinearLayout>
+</RelativeLayout>
