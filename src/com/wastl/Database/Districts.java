@@ -7,7 +7,7 @@ import android.content.Context;
 import android.database.Cursor;
 
 /**
- * Provides access to the district table.
+ * Exposes methods for accessing the district's table.
  * 
  * @author Lukas Bernreiter
  * @version 1.2.2, 04/03/2012
@@ -15,8 +15,27 @@ import android.database.Cursor;
  */
 public class Districts extends MainAdapter {
 
+	/**
+	 * Constructor, calls the base constructor.
+	 * @param _context the application context.
+	 */
 	public Districts(Context _context) {
 		super(_context);
+	}
+	
+	/**
+	 * Fetches every districts in the database.
+	 * @return a cursor containing all districts.
+	 */
+	public Cursor fetchAllDistricts()
+	{
+		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableDistricts(), new String[]{DatabaseFacade.GetColumnDistrictId(), DatabaseFacade.GetColumnDistrictName()},
+				null, null, null, null, null);
+		
+		if(null != cursor)
+			cursor.moveToFirst();
+		
+		return cursor;
 	}
 
 	/**

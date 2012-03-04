@@ -23,15 +23,15 @@ public class AppFacade
 	public static String GetTag(){ return TAG;}
 	
 	/** Retrieves the path to store the files. */
-	public static String GetPath(){return PATH;}
+	public static String GetPath(){return SD + PATH;}
 	
-	/** Retrieves the path to the sd card. */
+	/** Retrieves the path to the SD card. */
 	public static File GetSD(){return SD;}
 	
 	/** Retrieves the filename. Used to store the files */
 	public static String GetFilename(){return FILENAME;}
 	
-	/** Retrieves the full path to store the files. */
+	/** Retrieves the full path to the main XML file. */
 	public static String GetFullPath(){return SD+PATH+FILENAME;}
 	
 	/** Retrieves the main URL. */

@@ -286,10 +286,10 @@ public class XML {
 	}
 		
 	
-	/** Is used to download and store the XML file on the sd card
-	 * @param _URL specifies the download URL
-	 * @param _path specifies the location to store the file
-	 * @param _fileName the filename */
+	/** Is used to download and store the XML file on the SD card.
+	 * @param _URL 			specifies the download URL
+	 * @param _path 		specifies the location to store the file
+	 * @param _fileName 	the filename */
 	private void downloadXML(String _URL, String _path, String _fileName)
 	{
 		try {

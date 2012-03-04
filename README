@@ -6,4 +6,5 @@ Description: WASTL Mobile is a free service to retrieve information about curren
 ToDos:
 	- Rewrite database connection - in process
 	- Seperate eventlistener into more classes for each activity
+	- Rewrite Baz enum
 	- Bugfixing

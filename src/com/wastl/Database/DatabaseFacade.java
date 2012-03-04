@@ -10,7 +10,7 @@ package com.wastl.Database;
 public abstract class DatabaseFacade 
 {
 	// DB settings
-	private static final String DB_NAME 	  = "wastl.db";
+	private static final String DB_NAME 	= "wastl.db";
 	private static final Integer DB_VERSION = 3;
 	
 	// Table FireDepartments

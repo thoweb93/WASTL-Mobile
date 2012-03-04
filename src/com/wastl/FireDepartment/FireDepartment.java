@@ -14,18 +14,18 @@ import android.content.ContentValues;
  * 
  * @author Lukas Bernreiter
  * @version 1.2.1, 19/02/2012
- * 
+ * @since 1.2.1
  */
 public class FireDepartment implements IFireDepartment{
 
-	private Integer fireDepartmentId 			= 0; //DB
+	private Integer fireDepartmentId 			= 0; 
 	private Integer fireDepartmentNumber 		= 0;
 	private Integer id							= 0;
 	private String  fireDepartmentstatus		= "";
-	private String 	fireDepartmentPhoneNumber	= ""; //DB
-	private String  fireDepartmentName			= ""; //DB
-	private String  fireDepartmentLocation		= ""; //DB
-	private Integer	fireDepartmentDistrictID	= 0;  //DB
+	private String 	fireDepartmentPhoneNumber	= ""; 
+	private String  fireDepartmentName			= ""; 
+	private String  fireDepartmentLocation		= ""; 
+	private Integer	fireDepartmentDistrictID	= 0;  
 	
 	// Constructor
 	/**

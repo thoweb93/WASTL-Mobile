@@ -73,6 +73,10 @@ public class District implements IDistrict{
 		this.countFireDepartment = _countFireDepartment;
 	}
 	
+	/**
+	 * Retrieves the content of a district.
+	 * @return the content.
+	 */
 	public ContentValues getContentValues()
 	{
 		ContentValues values = new ContentValues();
