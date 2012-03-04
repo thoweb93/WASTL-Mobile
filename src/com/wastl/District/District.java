@@ -6,6 +6,10 @@
  */
 package com.wastl.District;
 
+import com.wastl.Database.DatabaseFacade;
+
+import android.content.ContentValues;
+
 /**
  * 
  * @author Lukas Bernreiter
@@ -18,12 +22,12 @@ public class District implements IDistrict{
 	private Integer countMission = 0;
 	private Integer countFireDepartment = 0;
 	
-	public String Name = "";
+	private String name = "";
 	
 	public District(Integer _id, String _name)
 	{
-		this.bezirkId = _id;	
-		this.Name = _name;
+		this.setId(_id);
+		this.setName(_name);
 	}
 	
 	public Integer getId()
@@ -31,6 +35,11 @@ public class District implements IDistrict{
 		return this.bezirkId;
 	}
 
+	public String getName()
+	{
+		return this.name;
+	}
+	
 	public Integer getCountMission() 
 	{
 		return this.countMission;		
@@ -49,6 +58,10 @@ public class District implements IDistrict{
 		this.bezirkId = _id;
 	}
 
+	public void setName(String _name){
+		this.name = _name;
+	}
+	
 	/** Set count of missions
 	 * @see com.wastl.District.IDistrict#setCountMission(java.lang.Integer)
 	 */
@@ -59,6 +72,17 @@ public class District implements IDistrict{
 	public void setCountFireDepartment(Integer _countFireDepartment) {
 		this.countFireDepartment = _countFireDepartment;
 	}
+	
+	public ContentValues getContentValues()
+	{
+		ContentValues values = new ContentValues();
+		
+		values.put(DatabaseFacade.GetColumnDistrictId(), this.getId());
+		values.put(DatabaseFacade.GetColumnDistrictName(), this.getName());
+		
+		return values;
+	}
+	
 }
 
 

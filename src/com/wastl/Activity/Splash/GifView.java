@@ -2,7 +2,7 @@ package com.wastl.Activity.Splash;
 
 import java.io.InputStream;
 
-import com.wastl.R;
+import com.ithtl.essapp.R;
 
 import android.content.Context;
 import android.graphics.Canvas;

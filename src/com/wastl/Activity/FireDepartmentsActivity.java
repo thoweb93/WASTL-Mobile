@@ -6,7 +6,7 @@
  */
 package com.wastl.Activity;
 
-import com.wastl.R;
+import com.ithtl.essapp.R;
 import com.wastl.XML;
 import com.wastl.Enums.EnumFireDepartments;
 import com.wastl.Enums.EnumFireDepartments.ID_FireDistricts;

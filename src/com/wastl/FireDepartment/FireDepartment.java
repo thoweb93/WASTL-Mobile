@@ -6,6 +6,10 @@
  */
 package com.wastl.FireDepartment;
 
+import com.wastl.Database.DatabaseFacade;
+
+import android.content.ContentValues;
+
 /**
  * 
  * @author Lukas Bernreiter
@@ -24,15 +28,17 @@ public class FireDepartment implements IFireDepartment{
 	private Integer	fireDepartmentDistrictID	= 0;  //DB
 	
 	// Constructor
-	public FireDepartment(Integer _fireDepartmentId)
-	{
-		this.fireDepartmentId = _fireDepartmentId;
-	}
-	
+	/**
+	 * Default Constructor
+	 */
 	public FireDepartment(){
 		
 	}
 	
+	public FireDepartment(Integer _fireDepartmentId)
+	{
+		this.fireDepartmentId = _fireDepartmentId;
+	}
 
 	public Integer getFireDepartmentDistrictID()  {	
 		return this.fireDepartmentDistrictID;
@@ -103,6 +109,18 @@ public class FireDepartment implements IFireDepartment{
 
 	public void setFireDepartmentStatus(String _fireDepartmentStatus) {
 		this.fireDepartmentstatus = _fireDepartmentStatus;
+	}
+	
+	public ContentValues getContentValues()
+	{
+		ContentValues values = new ContentValues();
+		
+		values.put(DatabaseFacade.GetColumnFdName(), this.getFireDepartmentName());
+		values.put(DatabaseFacade.GetColumnFdLocation(), this.getFireDepartmentLocation());
+		values.put(DatabaseFacade.GetColumnFdPhoneNumber(), this.getFireDepartmentPhoneNumber());
+		values.put(DatabaseFacade.GetColumnFdBazId(), this.getFireDepartmentDistrictID());
+		
+		return values;
 	}
 
 }

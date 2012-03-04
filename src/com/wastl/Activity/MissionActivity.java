@@ -7,7 +7,7 @@
 package com.wastl.Activity;
 
 // com.wastl
-import com.wastl.R;
+import com.ithtl.essapp.R;
 import com.wastl.District.DistrictFactory;
 import com.wastl.EventListener.EventListener;
 // Android

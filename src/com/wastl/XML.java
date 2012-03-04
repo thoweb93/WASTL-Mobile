@@ -21,7 +21,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException; 
 import org.apache.http.util.ByteArrayBuffer;
 
-import com.wastl.R;
+import com.ithtl.essapp.R;
 import com.wastl.Activity.MainActivity;
 import com.wastl.District.District;
 import com.wastl.District.DistrictFactory;

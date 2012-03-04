@@ -1,6 +1,6 @@
 package com.wastl.Activity.Splash;
 
-import com.wastl.R;
+import com.ithtl.essapp.R;
 import com.wastl.XML;
 import com.wastl.Activity.MainActivity;
 

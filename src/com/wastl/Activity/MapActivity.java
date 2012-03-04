@@ -10,12 +10,12 @@ package com.wastl.Activity;
 import java.security.acl.Group;
 
 import com.wastl.BitmapCombinator;
-import com.wastl.R;
+import com.ithtl.essapp.R;
 import com.wastl.WastlMap;
 import com.wastl.District.District;
 import com.wastl.District.DistrictFactory;
 import com.wastl.Enums.EnumDistricts;
-import com.wastl.R.id;
+import com.ithtl.essapp.R.id;
 // Android
 import android.app.Activity;
 import android.app.ProgressDialog;
