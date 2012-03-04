@@ -9,51 +9,39 @@ import android.content.Intent;
 import android.os.Bundle;
 
 /**
+ * Defines the splash screen.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.1, 19/02/2012
- * 
+ * @version 1.2.2, 04/03/2012
+ * @since 1.2.1
  */
-public class SplashActivity extends Activity {
+public class SplashActivity extends Activity implements Runnable {
 
-	private XML xml;	
-	private final int welcomeScreenDisplay = 20000;
+	private XML mXML = null;	
+	private Thread mSplash = null;
 	
+	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-	super.onCreate(savedInstanceState);
-	setContentView(R.layout.splash);
-	
-	Thread welcomeThread = new Thread() {
-
-		int wait = 0;
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.splash);
 		
-		@Override
-		public void run() {
-			try {
-				super.run();		
-				while (wait < welcomeScreenDisplay) {
-					sleep(100);
-					wait += 100;
-				}				
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-		}
-	};
+		this.initializeObjects();
+	}
 	
-	Thread initaliazeObjectsThread = new Thread() {
-		public void run(){
-			xml = new XML();	
-			xml.initaliazeObjects();			
+	private void initializeObjects()
+	{
+		this.mSplash = new Thread(this);
+		this.mSplash.start();
+	}
+	
+	public void run() {
+		synchronized (this) {
+			mXML = new XML();	
+			mXML.initaliazeObjects();			
 			startActivity(new Intent(SplashActivity.this,MainActivity.class));
 			finish();
 		}
-	};
-	
-	initaliazeObjectsThread.start();
-	welcomeThread.start();
-	
 	}
 	
 }

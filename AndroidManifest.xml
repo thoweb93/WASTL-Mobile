@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.wastl"
       android:versionCode="11"
-      android:versionName="1.2.1">
+      android:versionName="1.2.2">
+      
     <uses-sdk android:minSdkVersion="8" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -11,45 +12,56 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     
 
-    <application android:icon="@drawable/logo" android:label="WASTL Mobile" android:debuggable="true">
+    <application android:icon="@drawable/logo" android:label="@string/app_name" android:debuggable="true">
+        
         <uses-library android:name="com.google.android.maps" />
         
-        <activity android:name="com.ithtl.essapp.Activity.Splash.SplashActivity" android:screenOrientation="portrait" 
-        android:theme="@android:style/Theme.NoTitleBar">
+        <activity 
+            android:name="com.wastl.Activity.Splash.SplashActivity" 
+            android:screenOrientation="portrait" 
+        	android:theme="@android:style/Theme.NoTitleBar">
         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             
         </activity>
-        <activity android:name="com.ithtl.essapp.Activity.ESSAppActivity" android:screenOrientation="portrait"
-                  android:label="WASTL" android:theme="@android:style/Theme.NoTitleBar">            
-        </activity>
         
-        <activity android:name="com.ithtl.essapp.Activity.MapActivity"
-        		  android:label="WASTL" android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
+        <activity 
+            android:name="com.wastl.Activity.MainActivity"
+             android:screenOrientation="portrait"
+             android:label="WASTL" 
+             android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>            
+        
+        <activity android:name="com.wastl.Activity.MapActivity"
+        		  android:label="WASTL" 
+        		  android:theme="@android:style/Theme.NoTitleBar" />
 		
-		<activity android:name="com.ithtl.essapp.Activity.MissionActivity"
-				  android:label="Aktuelle Einsätze" >
-		</activity>
-		<activity android:name="com.ithtl.essapp.Activity.FireDepartmentsActivity"
-				  android:label="Feuerwehren im Bezirk">
-		</activity>
+		<activity android:name="com.wastl.Activity.MissionActivity"
+				  android:label="Aktuelle Einsätze" />
 		
-		<activity android:name="com.ithtl.essapp.Activity.BrowseDistrictsActivity"
-				  android:label="Bezirksalarmzentralen in NÖ">
-		</activity>
+		<activity android:name="com.wastl.Activity.FireDepartmentsActivity"
+				  android:label="Feuerwehren im Bezirk" />
 		
-		<activity android:name="com.ithtl.essapp.Activity.BrowseFireDepartmentsActivity"
-				  android:label="Feuerwehren im Bezirk">
-		</activity>
+		<activity android:name="com.wastl.Activity.BrowseDistrictsActivity"
+				  android:label="Bezirksalarmzentralen in NÖ"
+				  android:theme="@android:style/Theme.Light" />
 		
-		<activity android:name="com.wastl.Activity.FireDepartmentInfoActivity" android:screenOrientation="portrait"
-				  android:label="Feuerwehren" android:theme="@android:style/Theme.NoTitleBar">
-		</activity>
+		<activity android:name="com.wastl.Activity.BrowseFireDepartmentsActivity"
+				  android:label="Feuerwehren im Bezirk" 
+				  android:theme="@android:style/Theme.Black" />
 		
-	    
+		<activity 
+		    android:name="com.wastl.Activity.FireDepartmentInfoActivity" 
+		    android:screenOrientation="portrait"
+			android:label="Feuerwehren" 
+			android:theme="@android:style/Theme.NoTitleBar" />
 		
 	</application>
 </manifest>

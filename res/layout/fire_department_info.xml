@@ -8,7 +8,7 @@
     >
     
      <!-- Top header, contains headline and two images -->
-		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		<LinearLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"  
 	    android:id="@+id/layLinearTop"
@@ -17,7 +17,7 @@
 	    >	  	    
 	    	<!-- headline -->
 		    <TextView android:textAppearance="?android:attr/textAppearanceLarge" 
-		    android:text="WASTL Mobile" 
+		    android:text="@string/app_name" 
 		    android:layout_height="58dp"
 		    android:layout_width="wrap_content"
 		    android:gravity="center_vertical"
@@ -28,7 +28,7 @@
 		    />      
 	    
 	    	<!-- Images -->
-	    	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    	<LinearLayout
 		    android:layout_width="fill_parent"
 		    android:layout_height="wrap_content"  
 		    android:id="@+id/layLinearTopRight"
@@ -45,27 +45,26 @@
 			  	
 	    </LinearLayout>
     
-    <TextView android:textAppearance="?android:attr/textAppearanceLarge" 
-    android:text="Feuerwehr" 
-    android:layout_width="match_parent" 
-    android:gravity="center_vertical|center_horizontal" 
-    android:layout_height="58dp" 
-    android:textColor="#b22222"
-    android:id="@+id/tvFireDepartment"
-    android:layout_below="@+id/layLinearTop">
-    </TextView>
+    <TextView 
+    	android:textAppearance="?android:attr/textAppearanceLarge" 
+    	android:text="Feuerwehr" 
+    	android:layout_width="match_parent" 
+    	android:gravity="center_vertical|center_horizontal" 
+    	android:layout_height="58dp" 
+    	android:textColor="#b22222"
+    	android:id="@+id/tvFireDepartment"
+    	android:layout_below="@+id/layLinearTop" />
 
-	 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/tvFireDepartment"
-    android:id="@+id/layLinear"
-    android:layout_alignLeft="@+id/tvFireDepartment"
-    android:background="@drawable/border_background"
-	android:padding="10dp"
-	android:layout_margin="10dp"
-    >
+	 <LinearLayout
+	    android:orientation="vertical"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@+id/tvFireDepartment"
+	    android:id="@+id/layLinear"
+	    android:layout_alignLeft="@+id/tvFireDepartment"
+	    android:background="@drawable/border_background"
+		android:padding="10dp"
+		android:layout_margin="10dp" >
     <TextView  
         android:layout_width="fill_parent" 
         android:layout_height="wrap_content"
