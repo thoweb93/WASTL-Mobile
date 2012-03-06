@@ -10,6 +10,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.wastl.Entity.DistrictEntity;
+
 import android.util.Log;
 
 /**
@@ -21,50 +23,72 @@ import android.util.Log;
  */
 public class XMLParser 
 {
-	public XMLParser()
+	private String mFile = "";
+	
+	/**
+	 * Constructor, saves the path to the file.
+	 * @param _file	a path to the XML file.
+	 */
+	public XMLParser(String _file)
 	{
-		
+		this.mFile = _file;
 	}
 	
-	/** Retrieves the content of an parent Item (_searchPattern) */
-	public int getDataOfDistrict(String _xmlFile, String _id, Element _bezirInfo, String _searchPattern)
+	/**
+	 * Retrieves the details of a district using a id.
+	 * @param _id the id of the district.
+	 * @return a instance of DistrictEntity, containing all details.
+	 */
+	public DistrictEntity getDataOfDistrict(String _id)
 	{
-		int count = 0 ;
+		Element districtInfo = null;
 		
 		try {
 			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();		
 			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
-			Document doc = docBuilder.parse(new File(_xmlFile));
+			Document doc = docBuilder.parse(new File(this.mFile));
 			
 			doc.getDocumentElement().normalize();			
 			
-			_bezirInfo = doc.getElementById(_id);
+			districtInfo = doc.getElementById(_id);
 			
-			_bezirInfo.getTextContent();
+			districtInfo.getTextContent();
 						
 		} catch (Exception _e) {
 			Log.e(AppFacade.GetTag(), _e.getMessage());
 		}
 
-		// retrieve the count
-		Node nodeCount = this.getNodeByString(_bezirInfo,_searchPattern);
-		// convert the count
-		count = Integer.parseInt(nodeCount.getTextContent());
+		// create a new instance
+		DistrictEntity district = new DistrictEntity();
 		
-		return count;
+		try{
+			district.setId(Integer.parseInt(_id));
+			district.setName(this.getNodeByString(districtInfo, "cFriendlyName"));
+			district.setCountMission(Integer.parseInt(this.getNodeByString(districtInfo, "CountEinsatz")));
+			district.setCountFireDepartment(Integer.parseInt(this.getNodeByString(districtInfo, "CountFeuerwehr")));
+		}catch (Exception _e) {
+			Log.e(AppFacade.GetTag(), _e.getMessage());
+		}
+		
+		return district;
 	}
 	
-	/** Is used to retrieve a element
-	 * @param _element defines the element to search
-	 * @param _searchString search term */
-	private Node getNodeByString(Element _element,String _searchString)
+	/** Is used to retrieve a element.
+	 * @param _element 		defines the element to search
+	 * @param _searchString search term 
+	 * @throws Exception 	if anything matched.
+	 */
+	private String getNodeByString(Element _element, String _searchString) throws Exception
 	{
 		Element element = _element;
 		
 		NodeList nodeList = element.getElementsByTagName(_searchString);
 				
-		Node node = nodeList.item(0);		
+		Node node = nodeList.item(0);
 		
-		return node;
+		if(null == node)
+			throw new Exception("Failed to retrieve the node.");
+		
+		return node.getTextContent();
 	}
 }

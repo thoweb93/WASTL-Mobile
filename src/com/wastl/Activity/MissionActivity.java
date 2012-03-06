@@ -8,7 +8,7 @@ package com.wastl.Activity;
 
 // com.wastl
 import com.ithtl.essapp.R;
-import com.wastl.District.DistrictFactory;
+import com.wastl.Entity.DistrictMap;
 import com.wastl.EventListener.EventListener;
 // Android
 import android.app.ListActivity;
@@ -35,10 +35,10 @@ public class MissionActivity extends ListActivity {
         this.initializeObjects();                                     
         
         //fill the string[] with districts
-        DistrictFactory.fillDistrictsForList();
+        DistrictMap.fillDistrictsForList();
                  
         //set Data
-        this.setListAdapter(new ArrayAdapter<String>(this,R.layout.list_item, DistrictFactory.getDistrictsForList()));
+        this.setListAdapter(new ArrayAdapter<String>(this,R.layout.list_item, DistrictMap.getDistrictsForList()));
         
         //retrieve listView
         ListView districtListView = this.getListView();

@@ -16,12 +16,16 @@ import android.util.Log;
  * Downloads and stores the current status in Lower Austria.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.2, 04/03/2012
+ * @version 1.2.2, 06/03/2012
  * @since 1.2.2
  */
 public class WastlStatus 
 {	
-	public WastlStatus(){
+	/**
+	 * Default constructor.
+	 */
+	public WastlStatus()
+	{
 		// Create directory if needed
 		new File(AppFacade.GetPath()).mkdirs();
 	}

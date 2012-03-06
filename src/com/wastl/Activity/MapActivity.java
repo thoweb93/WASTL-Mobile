@@ -12,8 +12,8 @@ import java.security.acl.Group;
 import com.wastl.BitmapCombinator;
 import com.ithtl.essapp.R;
 import com.wastl.WastlMap;
-import com.wastl.District.District;
-import com.wastl.District.DistrictFactory;
+import com.wastl.Entity.DistrictEntity;
+import com.wastl.Entity.DistrictMap;
 import com.wastl.Enums.EnumDistricts;
 import com.ithtl.essapp.R.id;
 // Android
@@ -85,10 +85,10 @@ public class MapActivity extends Activity implements Runnable{
 	{
 		Drawable map = context.getResources().getDrawable(R.drawable.niederoesterreich);
 		
-		for(int i=0; i < DistrictFactory.getMap().size(); i++)
+		for(int i=0; i < DistrictMap.getMap().size(); i++)
 		{
 			
-			Integer districtId = ((District)(DistrictFactory.getMap().values().toArray()[i])).getId();
+			Integer districtId = ((DistrictEntity)(DistrictMap.getMap().values().toArray()[i])).getId();
 			
 			switch(districtId)
 			{
@@ -239,7 +239,7 @@ public class MapActivity extends Activity implements Runnable{
 	
 	private Drawable switchAlert(Integer _bezirk, Drawable _map, Integer _low, Integer _middle, Integer _high)
 	{
-		Integer missions = ((District)(DistrictFactory.getMap().values().toArray()[_bezirk])).getCountFireDepartment();
+		Integer missions = ((DistrictEntity)(DistrictMap.getMap().values().toArray()[_bezirk])).getCountFireDepartment();
 		
 		if(missions == 0)
 			return _map;

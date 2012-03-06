@@ -1,7 +1,7 @@
 package com.wastl.Database;
 
 // com.wastl
-import com.wastl.District.District;
+import com.wastl.Entity.DistrictEntity;
 // android
 import android.content.Context;
 import android.database.Cursor;
@@ -43,7 +43,7 @@ public class Districts extends MainAdapter {
 	 * @param _relation 	the new relation
 	 * @return 				the row id of the newly created relation, or -1 otherwise.
 	 */
-	public long addDistrict(District _districtEntity)
+	public long addDistrict(DistrictEntity _districtEntity)
 	{
 		return mDatabase.insert(DatabaseFacade.GetTableDistricts(), null, _districtEntity.getContentValues());	
 	}

@@ -23,8 +23,8 @@ import org.apache.http.util.ByteArrayBuffer;
 
 import com.ithtl.essapp.R;
 import com.wastl.Activity.MainActivity;
-import com.wastl.District.District;
-import com.wastl.District.DistrictFactory;
+import com.wastl.Entity.DistrictEntity;
+import com.wastl.Entity.DistrictMap;
 import com.wastl.Enums.EnumDistricts;
 import com.wastl.Enums.EnumFireDepartments;
 import com.wastl.Enums.EnumFireDepartments.ID_FireDistricts;
@@ -79,7 +79,7 @@ public class XML {
 		if(this.removedLWZ)
 			districtsEmploying -= 1;
 		
-		districtsEmploying += DistrictFactory.getMap().size();
+		districtsEmploying += DistrictMap.getMap().size();
 		
 		// get the amount of missions and fire departments employing
 		missionCount = this.countMissions();
@@ -107,10 +107,10 @@ public class XML {
 		this.removedLWZ = false;			
 		
 		//fill the hashMap with instances
-		this.fillDistricts(AppFacade.GetFullPath());		
+		this.fillDistricts();		
 	}
 	
-	public void setFireDepartments(ID_FireDistricts _district)
+/*	public void setFireDepartments(ID_FireDistricts _district)
 	{
 		//set objects		
 		String addition 		= this.fireDepartments.getURL(_district);
@@ -118,7 +118,7 @@ public class XML {
 		String fileName 		= this.fireDepartments.getFileName(_district);
 		String fullPathToFile 	= AppFacade.GetSD() + AppFacade.GetPath() + fileName;
 		
-		DistrictFactory.getMap().clear();
+		DistrictMap.getMap().clear();
 		this.fillDistricts(AppFacade.GetFullPath());
 		
 		//download the XML file and store it on the external storage
@@ -177,7 +177,7 @@ public class XML {
 		}
 		
 		return listOfFireDepartments;
-	}
+	}*/
 	
 	/** initialize results */
 	private void initiliaseResults()
@@ -185,7 +185,7 @@ public class XML {
 		missionCount 			= 0;
 		districtsEmploying 		= 0;
 		fireDepartmentCount 	= 0;
-		DistrictFactory.getMap().clear();
+		DistrictMap.getMap().clear();
 	}
 	
 	/** Counts every mission from every district stored in the hashMap */
@@ -193,11 +193,11 @@ public class XML {
 	{
 		int missions = 0;
 		
-		for(District _bezirk: DistrictFactory.getMap().values())
+		for(DistrictEntity _bezirk: DistrictMap.getMap().values())
 		{
 			int newCount = _bezirk.getId();
 			
-			District bezirk = DistrictFactory.getInstance(newCount);
+			DistrictEntity bezirk = DistrictMap.getInstance(newCount);
 			
 			missions += bezirk.getCountMission();
 		}	
@@ -209,11 +209,11 @@ public class XML {
 	{
 		int departments = 0;
 		
-		for(District _bezirk: DistrictFactory.getMap().values())
+		for(DistrictEntity _bezirk: DistrictMap.getMap().values())
 		{
 			int newCount = _bezirk.getId();
 			
-			District bezirk = DistrictFactory.getInstance(newCount);
+			DistrictEntity bezirk = DistrictMap.getInstance(newCount);
 			
 			departments += bezirk.getCountFireDepartment();
 		}	
@@ -222,35 +222,33 @@ public class XML {
 	}
 	/** fills the hashMap with a instance of every district, containing the current count of missions
 	 * and fire departments deploying in this district */
-	public void fillDistricts(String _filePath)
+	public void fillDistricts()
 	{
-		for(String bezirkID: this.getIds())
-		{	
-			District bezirk = DistrictFactory.getInstance(Integer.parseInt(bezirkID));
+		// clear the list
+		DistrictMap.getMap().clear();
+		
+		for(String districtId: this.getIds())
+		{					
+			// Create a new instance
+			DistrictEntity district = DistrictMap.getInstance(Integer.parseInt(districtId));
+								
 			
-			bezirk.setCountMission(this.getDataOfDistrict(_filePath, bezirkID, bezirkInfo, "CountEinsatz"));
-			bezirk.setCountFireDepartment(this.getDataOfDistrict(_filePath, bezirkID, bezirkInfo, "CountFeuerwehr"));					
-			
-			if(bezirk.getCountFireDepartment().equals(0) && bezirk.getCountMission().equals(0)){
-				DistrictFactory.removeBezirk(bezirk.getId());				
-				if(bezirk.getId().equals(Integer.parseInt(this.bezirke.ID_LWZ)))
+			if(district.getCountFireDepartment().equals(0) && district.getCountMission().equals(0)){
+				DistrictMap.removeBezirk(district.getId());				
+				if(district.getId().equals(Integer.parseInt(this.bezirke.ID_LWZ)))
 					this.removedLWZ = false;
 			}else
-				if(bezirk.getId().equals(Integer.parseInt(this.bezirke.ID_LWZ)))
+				if(district.getId().equals(Integer.parseInt(this.bezirke.ID_LWZ)))
 					this.removedLWZ = true;
 		}
 	}
 	public void fillDistrictsFull()
 	{
-		String filePath = AppFacade.GetFullPath();
+		// clear the list
+		DistrictMap.getMap().clear();
 		
 		for(String bezirkID: this.getIds())
-		{
-			District bezirk = DistrictFactory.getInstance(Integer.parseInt(bezirkID));
-			
-			bezirk.setCountMission(this.getDataOfDistrict(filePath, bezirkID, bezirkInfo, "CountEinsatz"));
-			bezirk.setCountFireDepartment(this.getDataOfDistrict(filePath, bezirkID, bezirkInfo, "CountFeuerwehr"));				
-		}
+			DistrictMap.getInstance(Integer.parseInt(bezirkID));		
 	}
 	
 	/** Retrieves the content of an parent Item (_searchPattern) */

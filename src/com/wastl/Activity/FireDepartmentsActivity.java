@@ -68,7 +68,7 @@ public class FireDepartmentsActivity extends ListActivity implements Runnable {
         ID_FireDistricts id_FireDistrict = this.enumFireDepartments.getEnumFromString(this.selectedItemText);        
         
         //fill instanceMap
-        this.xml.setFireDepartments(id_FireDistrict);
+       // this.xml.setFireDepartments(id_FireDistrict);
         
         //fill string[]
         FireDepartmentFactory.fillFireDepartmentsForList(false);
