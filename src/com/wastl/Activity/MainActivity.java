@@ -7,94 +7,89 @@
 package com.wastl.Activity;
 
 // com.ithtl.essap
+// com.wastl
 import com.ithtl.essapp.R;
-import com.wastl.XML;
-import com.wastl.EventListener.EventListener;
+import com.wastl.XMLWrapper;
+import com.wastl.EventListener.EventListener_MainActivity;
 
 // Android
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
+ * Main activity, displays the current status and provides buttons for further interaction.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.1, 19/02/2012
- * 
+ * @version 1.2.2, 08/03/2012
+ * @since 1.2.1
  */
 public class MainActivity extends Activity {
 	
-	//Objects
-	//Navigation Buttons
-	private Button buttonMap;
-	private Button buttonMission;
-	private Button buttonBrowse;
-	//EventListener
-	private EventListener eventListener;
-	//XML-Data
-	private XML xml;
-	//Connection available
-	private static Boolean connection = true;
+	// Objects
+	private EventListener_MainActivity mEventListener_MainActivity = null;
+	
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // set content
+        super.onCreate(savedInstanceState);        
         setContentView(R.layout.main);
         
-        //check if a network connection is available
-        if(!this.getNetworkState()){
-        	Log.d("WASTL", "No Connection");
-        	connection = false;        	
-        }
-        
-        // initialize objects
-        this.eventListener 	= new EventListener(this);
-        // get Buttons
-        this.buttonMap 		= (Button)this.findViewById(R.id.buttonMap);
-        this.buttonMission 	= (Button)this.findViewById(R.id.buttonMission);
-    	this.buttonBrowse 	= (Button)this.findViewById(R.id.buttonBrowse);
-
-    	//get XML and set the data 
-        this.xml = new XML(this);
-        this.xml.setStartup();
-                
-        
-        if(!connection)        
-        	new AlertDialog.Builder(this).setTitle("WASTL").setMessage("Keine Internet Verbindung verfügbar! Daten sind nicht aktuell!").setNeutralButton("Ok", null).show();        
-        
-        // Set EventListeners
-        this.buttonMap.setOnClickListener(this.eventListener);
-        this.buttonMission.setOnClickListener(this.eventListener);
-        this.buttonBrowse.setOnClickListener(this.eventListener);               
-        
+        this.initializeObjects();                          
     }
+    
+    private void initializeObjects()
+    {
+    	// declare events
+    	this.mEventListener_MainActivity = new EventListener_MainActivity(this);
+    	this.mEventListener_MainActivity.setEvents();    	        
+    	
+    	// set the results
+//    	this.getTextViewMissionCount().setText(XMLWrapper.GetCountMissions());
+//    	this.getTextViewFireDepartmentsCount().setText(XMLWrapper.GetCountFireDepartments());
+    	
+    }       
     
     /*
-     * Checks the network state.
-     * Returns true if a connection exists, fales otherwise.
-     */
-    private Boolean getNetworkState()
-    {
-    	  ConnectivityManager connectivityManager 
-          = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-    	  NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-    	  return activeNetworkInfo != null;
+    /**
+     * Retrieves the map button.
+     * @return The button.
+     *
+    public Button getButtonMap(){
+    	return (Button)this.findViewById(R.id.button_Map); 
     }
     
-    public Button getButtonMap()			{return this.buttonMap; }
-    public Button getButtonMission()		{return this.buttonMission; }
-    public static Boolean getConnection()	{return connection; }
-    public Button getButtonBrowse()			{return this.buttonBrowse;}
-    
-    public void onDestroy()
-    {
-    	super.onDestroy();
-    	System.exit(0);   
+    /**
+     * Retrieves the missions button.
+     * @return The button.
+     *
+    public Button getButtonMission(){
+    	return (Button)this.findViewById(R.id.button_Mission); 
     }
+    
+    /**
+     * Retrieves the browse button.
+     * @return The button.
+     *
+    public Button getButtonBrowse(){
+    	return (Button)this.findViewById(R.id.button_Browse);
+    }
+      
+    /**
+     * Retrieves the textView for the mission count. 
+     * @return The textView.
+     *
+    public TextView getTextViewMissionCount(){
+    	return (TextView)this.findViewById(R.id.textView_missionCount1);
+    }
+    
+    /**
+     * Retrieves the textView for the fire department count.
+     * @return The textView.
+     *
+    public TextView getTextViewFireDepartmentsCount(){
+    	return (TextView)this.findViewById(R.id.textView_fireDepartmentCount);
+    }*/
+    
 }

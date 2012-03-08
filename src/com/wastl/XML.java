@@ -88,7 +88,7 @@ public class XML {
 		
 	// needs to be done on startup
 	public void setStartup()
-	{	
+	{	/*
 		//now get the textViews from the main activity
 		TextView textView_missionCount = (TextView)this.essApp.findViewById(R.id.textView_missionCount);
 		TextView textView_fireDepartmentCount = (TextView)this.essApp.findViewById(R.id.textView_fireDepartmentCount);
@@ -98,7 +98,7 @@ public class XML {
 		//print the current count of mission and fire departments employing
 		textView_missionCount.setText("Einsätze insgesamt: " + missionCount);
 		textView_fireDepartmentCount.setText("Feuerwehren im Einsatz: " + fireDepartmentCount);
-		textView_districts.setText("Bezirke im Einsatz: " + districtsEmploying);
+		textView_districts.setText("Bezirke im Einsatz: " + districtsEmploying);*/
 		
 	}
 	public void downloadAndFillDistrictMap()

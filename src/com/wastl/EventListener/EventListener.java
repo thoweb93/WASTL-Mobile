@@ -65,38 +65,7 @@ public class EventListener implements OnClickListener, OnItemClickListener, OnMe
 		this.browse = _browse;
 	}
 	
-	// OnClick Event for Buttons
-	public void onClick(View _v) {		
-		
-		// Button MissionMap
-		if(_v == this.essApp.getButtonMap())
-		{
-			if(MainActivity.getConnection())
-			{
-				Intent intentMap = new Intent(_v.getContext(), MapActivity.class);
-	            this.essApp.startActivity(intentMap);
-			}
-			else 
-				new AlertDialog.Builder(this.essApp).setTitle("WASTL").setMessage("Keine Internet Verbindung verfügbar!").setNeutralButton("Ok", null).show();
-		}
-		// Button actual missions
-		if(_v == this.essApp.getButtonMission())
-		{			
-			if(MainActivity.getConnection())
-			{
-				Intent intentMission = new Intent(_v.getContext(), MissionActivity.class);
-            	this.essApp.startActivity(intentMission);
-			}
-			else
-				new AlertDialog.Builder(this.essApp).setTitle("WASTL").setMessage("Keine Internet Verbindung verfügbar!").setNeutralButton("Ok", null).show();			
-		}
-		// Button browse fire departments
-		if(_v == this.essApp.getButtonBrowse())
-		{
-			Intent intentBrowse = new Intent(_v.getContext(), BrowseDistrictsActivity.class);
-			this.essApp.startActivity(intentBrowse);
-		}
-	}
+
 
 	public void onDestroy(){
 		System.exit(0);
@@ -166,6 +135,10 @@ public class EventListener implements OnClickListener, OnItemClickListener, OnMe
 				
 		}
 		return false;
+	}
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

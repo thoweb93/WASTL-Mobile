@@ -104,12 +104,11 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
 			// location of the fire department
 			this.address = fireDepartment.getFireDepartmentLocation();
 			
-			if(MainActivity.getConnection())
-			{
+		
 				// Convert address to latitude and longitude
 				this.latitude = this.getLatitude(address);
 				this.longitude = this.getLongitude(address);
-			}				
+							
 			
 		}catch(Exception e){Log.d("WASTL", e.getMessage());}
 		
@@ -139,10 +138,8 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
     		itemizedoverlay.addOverlay(overlayitem);
     		mapOverlays.add(itemizedoverlay);
     		
-    		if(MainActivity.getConnection())
-    		{
     			mapView.setVisibility(0);    			
-    		}
+    		
         }
 	};
 	

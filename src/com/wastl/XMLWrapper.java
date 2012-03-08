@@ -39,7 +39,8 @@ public class XMLWrapper
 		this.mStatus.downloadCurrentStatus();
 		
 		for(Integer districtId : DistrictEntity.FetchAllIds())
-		{					
+		{	
+			// will create a new entity
 			DistrictEntity district = DistrictMap.getInstance(districtId);
 								
 			mCountMissions += district.getCountMission();

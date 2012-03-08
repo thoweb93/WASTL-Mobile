@@ -3,5 +3,6 @@
     
 	<!-- Application -->
     <string name="app_name">WASTL Mobile</string>
+    <string name="logo">Image</string>
     
 </resources>
