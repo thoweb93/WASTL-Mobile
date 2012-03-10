@@ -17,7 +17,7 @@ import java.util.HashMap;
 public class FireDepartmentFactory {
 
 	//objects
-	private static java.util.Map<Integer, FireDepartment> instanceMap = new HashMap<Integer, FireDepartment>();
+	private static java.util.Map<Integer, FireDepartmentEntity> instanceMap = new HashMap<Integer, FireDepartmentEntity>();
 	private static FireDepartmentFactory instance = null;
 	private static String currentBAZId = null;
 	private static String[] FireDepartmentsStatus;
@@ -30,17 +30,17 @@ public class FireDepartmentFactory {
 	//create the instance and store it in the hashMap
 	private static void createInstance(Integer _fireDepartmentId)
 	{
-		FireDepartment fireDepartment = new FireDepartment(_fireDepartmentId);
+		FireDepartmentEntity fireDepartment = new FireDepartmentEntity(_fireDepartmentId);
 		instanceMap.put(_fireDepartmentId, fireDepartment);
 	}
 	
 	//if the instance is already in the hashMap return it, create it otherwise
-	public static FireDepartment getFireDepartmentInstance(Integer _fireDepartmentId)
+	public static FireDepartmentEntity getFireDepartmentInstance(Integer _fireDepartmentId)
 	{
 		if(!(instanceMap.containsKey(_fireDepartmentId)))
 			createInstance(_fireDepartmentId);
 		
-		FireDepartment fireDepartment = instanceMap.get(_fireDepartmentId);
+		FireDepartmentEntity fireDepartment = instanceMap.get(_fireDepartmentId);
 		return fireDepartment;
 	}
 	//getInstance for singleton
@@ -68,7 +68,7 @@ public class FireDepartmentFactory {
 		
 		String buffFireDepartment = new String(); 		//contains every fire department employing
 		String buffFireDepartmentAll = new String(); 	//contains a fire department which is not employing
-		for(FireDepartment fireDepartment: instanceMap.values())
+		for(FireDepartmentEntity fireDepartment: instanceMap.values())
 		{
 			buffFireDepartmentAll = fireDepartment.getFireDepartmentStatus();
 
@@ -88,6 +88,6 @@ public class FireDepartmentFactory {
 		
 	
 	public static String[] getFireDepartmentList(){ return FireDepartmentsStatus; }
-	public static java.util.Map<Integer, FireDepartment> getMap(){ return instanceMap;}
+	public static java.util.Map<Integer, FireDepartmentEntity> getMap(){ return instanceMap;}
 	public static String getCurrentBAZId(){ return currentBAZId; }
 }

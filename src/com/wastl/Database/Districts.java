@@ -39,12 +39,12 @@ public class Districts extends MainAdapter {
 	}
 
 	/**
-	 * Adds a new relation to the database.
-	 * @param _relation 	the new relation
-	 * @return 				the row id of the newly created relation, or -1 otherwise.
+	 * Adds a new district to the database.
+	 * @param _relation 	the new district
+	 * @return 				the row id of the created district, or -1 otherwise.
 	 */
 	public long addDistrict(DistrictEntity _districtEntity)
-	{
+	{	
 		return mDatabase.insert(DatabaseFacade.GetTableDistricts(), null, _districtEntity.getContentValues());	
 	}
 	
@@ -72,13 +72,14 @@ public class Districts extends MainAdapter {
 	public Cursor fetchDistrict(String _name)
 	{
 		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableDistricts(), new String[]{DatabaseFacade.GetColumnDistrictId(), DatabaseFacade.GetColumnDistrictName()},
-				DatabaseFacade.GetColumnDistrictName() + "=" +  _name, null, null, null, null);
+				DatabaseFacade.GetColumnDistrictName() + "=" +  _name, null, null, null, null);	
+		
 		
 		if(null != cursor)
 			cursor.moveToFirst();
 		
 		return cursor;
-	}
+	}	
 	
 	/**
 	 * Deletes a district from the database.

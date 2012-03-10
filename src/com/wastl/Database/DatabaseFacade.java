@@ -11,7 +11,7 @@ public abstract class DatabaseFacade
 {
 	// DB settings
 	private static final String DB_NAME 	= "wastl.db";
-	private static final Integer DB_VERSION = 3;
+	private static final Integer DB_VERSION = 7;
 	
 	// Table FireDepartments
 	private static final String FIREDEPARTMENTS_TABLE_NAME 	= "FireDepartments";	

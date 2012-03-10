@@ -5,4 +5,11 @@
     <string name="app_name">WASTL Mobile</string>
     <string name="logo">Image</string>
     
+    <!-- Main -->
+    <string name="imageButton_Search">Search</string>
+    
+    
+    <!-- Database -->
+    <string name="create_database">Datenbank wird erstellt</string>
+    
 </resources>

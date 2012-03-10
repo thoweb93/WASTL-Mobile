@@ -128,17 +128,14 @@ public class EventListener implements OnClickListener, OnItemClickListener, OnMe
 			
 		}
 	}
-
-	public boolean onMenuItemClick(MenuItem _item) {
-		// Update DB menu item click
-		if(_item == browse.getMI_Refresh()){
-				
-		}
-		return false;
-	}
+	
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		
+	}
+	public boolean onMenuItemClick(MenuItem item) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

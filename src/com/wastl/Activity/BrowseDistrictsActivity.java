@@ -7,123 +7,91 @@
 
 package com.wastl.Activity;
 
-// com.ithtl.essap
+// com.ithtl
+// com.wastl
 import com.ithtl.essapp.R;
-import com.wastl.Database.DBAdapter;
-import com.wastl.EventListener.EventListener;
-import com.ithtl.essapp.R.id;
+import com.wastl.Database.DatabaseFacade;
+import com.wastl.Database.Districts;
+import com.wastl.EventListener.EventListener_BrowseDistrictsActivity;
 
 // Android
-import android.app.ListActivity;
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 /**
  * 
  * @author Lukas Bernreiter
- * @version 1.2.1, 19/02/2012
- * 
+ * @version 1.2.2, 10/03/2012
+ * @since 1.2.1
  */
-public class BrowseDistrictsActivity extends ListActivity implements Runnable {
+public class BrowseDistrictsActivity extends Activity implements Runnable {
 		
-	private MenuItem MenuItemRefresh;
-	private EventListener eventListener;
-	private ListView districtListView;
-	private Context context;
-	private ProgressDialog progressDialog;
-	private DBAdapter dba;
+	private EventListener_BrowseDistrictsActivity mEventListener_BrowseDistricts = null;
+	private ProgressDialog mProgressDialog = null;
+	private ListView mListView = null;
+	private Cursor mCursor = null;
+	private Context mContext = null;
 	
-	private String[] districts;
-		
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        this.setContentView(R.layout.browse_districts);
+        
         // initialize all objects
         this.initializeObjects();
       
         // load the data for the listView
-        this.loadData();                      
+        Thread thread = new Thread(this);
+		thread.start();                   
 	}	
 	
-	// initialize objects
 	private void initializeObjects()
 	{
-        this.eventListener 	= new EventListener(this);           
-        this.context = this.getApplicationContext();	
-        
-	}
-	
-	// shows the progress dialog and starts a thread to load the data
-	private void loadData()
-	{
-		this.progressDialog = ProgressDialog.show(this, "", "Datenbank wird erstellt", true);
+		// Register events
+		this.mEventListener_BrowseDistricts = new EventListener_BrowseDistrictsActivity(this);
+		this.mEventListener_BrowseDistricts.setEvents();
+
+		this.mContext = this.getApplicationContext();
 		
-		Thread thread = new Thread(this);
-		thread.start();
+		this.mListView = (ListView)this.findViewById(R.id.listView_Browse_Districts);
+		
+		this.mProgressDialog = ProgressDialog.show(this, "", this.getString(R.string.create_database), true);
 	}
 	
-	// Thread
-	// loads the data
 	public void run()
-	{	
-		this.dba = new DBAdapter(this.getApplicationContext());
-        this.districts = dba.readAllDistricts();        
-        
-        // used to update the listView
+	{
+		// Fetch all districts
+		Districts districts = new Districts(this);
+		this.mCursor = districts.fetchAllDistricts();
+        this.startManagingCursor(this.mCursor);
+		
+        // Update listView
         handler.sendEmptyMessage(0);
 	}
-	
-	// Needed to update the UI objects, 
-	// because the most UI objects cannot be updated from a dispatcher
+		
 	private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-        	progressDialog.dismiss();
-            
-        	// set Data           
-        	setListAdapter(new ArrayAdapter<String>(context,R.layout.list_item, districts));
-            // retrieve listView
-            districtListView = getListView();
-            
-            districtListView.setTextFilterEnabled(true);
-            
-            // set listView style
-            this.setListViewStyle(districtListView);
-            
-            // set eventListener
-            districtListView.setOnItemClickListener(eventListener); 
+        	mProgressDialog.dismiss();
+                 
+        	// A list of column names representing the data to bind to the UI
+        	String[] from = new String[]{DatabaseFacade.GetColumnDistrictName() };
+        	
+        	// The views that should display column in the "from" parameter.
+        	int[] to = new int[]{R.id.textView_list };
+
+        	SimpleCursorAdapter dataSource = new SimpleCursorAdapter(mContext, R.layout.list_item, mCursor,from, to);
+        	
+        	mListView.setAdapter(dataSource);        	
         }
         
-        private void setListViewStyle(ListView _listView)
-    	{
-    		_listView.setBackgroundColor(Color.GRAY);
-    		_listView.setPadding(10, 10, 10, 10);
-    		_listView.setDivider(new ColorDrawable(Color.GRAY));
-    		_listView.setDividerHeight(15);
-    		_listView.setCacheColorHint(0);
-    	}
+        
 	};
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu _menu){
-		MenuInflater inflater = getMenuInflater();
-		inflater.inflate(R.menu.browse_districts_menu, _menu);
 		
-        this.MenuItemRefresh = (MenuItem) _menu.findItem(id.MI_Refresh);
-        this.MenuItemRefresh.setOnMenuItemClickListener(this.eventListener);
-		return true;
-	}
-	
-	// Get the menu button	
-	public MenuItem getMI_Refresh()	{return this.MenuItemRefresh; }
 }

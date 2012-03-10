@@ -9,14 +9,13 @@ package com.wastl.Activity;
 // com.ithtl.essap
 // com.wastl
 import com.ithtl.essapp.R;
-import com.wastl.XMLWrapper;
+import com.wastl.NavigationAdapter;
 import com.wastl.EventListener.EventListener_MainActivity;
 
 // Android
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.GridView;
 
 /**
  * Main activity, displays the current status and provides buttons for further interaction.
@@ -45,51 +44,15 @@ public class MainActivity extends Activity {
     	this.mEventListener_MainActivity = new EventListener_MainActivity(this);
     	this.mEventListener_MainActivity.setEvents();    	        
     	
-    	// set the results
-//    	this.getTextViewMissionCount().setText(XMLWrapper.GetCountMissions());
-//    	this.getTextViewFireDepartmentsCount().setText(XMLWrapper.GetCountFireDepartments());
-    	
+    	// fill gridView
+    	this.getGridViewNavigation().setAdapter(new NavigationAdapter(this));    	    	
     }       
-    
-    /*
+        
     /**
-     * Retrieves the map button.
-     * @return The button.
-     *
-    public Button getButtonMap(){
-    	return (Button)this.findViewById(R.id.button_Map); 
+     * Retrieves the gridView.
+     * @return The gridView.
+     */
+    public GridView getGridViewNavigation(){
+    	return (GridView)this.findViewById(R.id.gridview_Main_Navigation);
     }
-    
-    /**
-     * Retrieves the missions button.
-     * @return The button.
-     *
-    public Button getButtonMission(){
-    	return (Button)this.findViewById(R.id.button_Mission); 
-    }
-    
-    /**
-     * Retrieves the browse button.
-     * @return The button.
-     *
-    public Button getButtonBrowse(){
-    	return (Button)this.findViewById(R.id.button_Browse);
-    }
-      
-    /**
-     * Retrieves the textView for the mission count. 
-     * @return The textView.
-     *
-    public TextView getTextViewMissionCount(){
-    	return (TextView)this.findViewById(R.id.textView_missionCount1);
-    }
-    
-    /**
-     * Retrieves the textView for the fire department count.
-     * @return The textView.
-     *
-    public TextView getTextViewFireDepartmentsCount(){
-    	return (TextView)this.findViewById(R.id.textView_fireDepartmentCount);
-    }*/
-    
 }

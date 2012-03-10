@@ -28,7 +28,7 @@ import com.wastl.Entity.DistrictMap;
 import com.wastl.Enums.EnumDistricts;
 import com.wastl.Enums.EnumFireDepartments;
 import com.wastl.Enums.EnumFireDepartments.ID_FireDistricts;
-import com.wastl.FireDepartment.FireDepartment;
+import com.wastl.FireDepartment.FireDepartmentEntity;
 import com.wastl.FireDepartment.FireDepartmentFactory;
 
 import android.content.Context;

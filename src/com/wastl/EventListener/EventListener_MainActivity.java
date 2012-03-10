@@ -1,10 +1,11 @@
 package com.wastl.EventListener;
 
+// android
 import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-
-import com.ithtl.essapp.R;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+// com.wastl
 import com.wastl.Activity.BrowseDistrictsActivity;
 import com.wastl.Activity.MainActivity;
 import com.wastl.Activity.MapActivity;
@@ -17,7 +18,7 @@ import com.wastl.Activity.MissionActivity;
  * @version 1.2.2, 08/03/2012
  * @since 1.2.2
  */
-public class EventListener_MainActivity implements OnClickListener
+public class EventListener_MainActivity implements OnItemClickListener
 {
 	private MainActivity mMain = null;
 
@@ -35,33 +36,33 @@ public class EventListener_MainActivity implements OnClickListener
 	 */
 	public void setEvents()
 	{
-		/*this.mMain.getButtonBrowse().setOnClickListener(this);
-		this.mMain.getButtonMap().setOnClickListener(this);
-		this.mMain.getButtonMission().setOnClickListener(this);*/
+		this.mMain.getGridViewNavigation().setOnItemClickListener(this);
 	}
 
-	/** Called when a registered view gets clicked */
-	public void onClick(View _v) 
+	public void onItemClick(AdapterView<?> _parent, View _view, int _position, long _id) 
 	{
 		Intent intent = null;
-		/*
-		switch (_v.getId()) 
+		
+		switch(_position)
 		{
-			case R.id.button_Browse:
-				intent = new Intent(_v.getContext(), BrowseDistrictsActivity.class);				
-				break;
-				
-			case R.id.button_Map:
-				intent = new Intent(_v.getContext(), MapActivity.class);
-				break;
-				
-			case R.id.button_Mission:
-				intent = new Intent(_v.getContext(), MissionActivity.class);
-				break;
-				
-			default:
-				return;
-		}*/
+		case 0:
+			break;
+		case 1:
+			intent = new Intent(_view.getContext(), MissionActivity.class);
+			break;
+		case 2:
+			intent = new Intent(_view.getContext(), MapActivity.class);
+			break;
+		case 3:
+			intent = new Intent(_view.getContext(), BrowseDistrictsActivity.class);	
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		default:
+			return;
+		}
 		
 		this.mMain.startActivity(intent);
 	}

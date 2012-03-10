@@ -1,6 +1,7 @@
 package com.wastl;
 
 import java.io.File;
+import java.io.InputStream;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -10,8 +11,11 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import com.ithtl.essapp.R;
 import com.wastl.Entity.DistrictEntity;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.util.Log;
 
 /**
@@ -24,6 +28,11 @@ import android.util.Log;
 public class XMLParser 
 {
 	private String mFile = "";
+	
+	public XMLParser()
+	{
+		
+	}
 	
 	/**
 	 * Constructor, saves the path to the file.
@@ -73,12 +82,59 @@ public class XMLParser
 		return district;
 	}
 	
+
+	
+	public NodeList load_Fire_Department_XML(Context _context)
+	{
+		Resources resources = _context.getResources();
+		NodeList fireDepartmentList = null;
+		InputStream inputStream = resources.openRawResource(R.raw.fire_departments_lower_austria);
+		
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder builder;
+		try {
+			builder = factory.newDocumentBuilder();
+			Document document = builder.parse(inputStream);
+			
+			document.getDocumentElement().normalize();
+			
+			fireDepartmentList = document.getElementsByTagName("FireDepartmentEntity");
+			
+		} catch (Exception e) {
+			Log.e(AppFacade.GetTag(), e.getMessage());		
+		}
+		
+		return fireDepartmentList;	
+	}
+	
+	public NodeList load_BAZ_XML(Context _context)
+	{		
+		Resources resources = _context.getResources();
+		NodeList bazList = null;
+		InputStream inputStream = resources.openRawResource(R.raw.baz_lower_austria);
+		
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+		
+			Document document = builder.parse(inputStream);
+			
+			document.getDocumentElement().normalize();
+			
+			bazList = document.getElementsByTagName("BAZ");
+			
+		} catch (Exception e) {
+			Log.e(AppFacade.GetTag(), e.getMessage());
+		}
+		
+		return bazList;
+	}
+	
 	/** Is used to retrieve a element.
 	 * @param _element 		defines the element to search
 	 * @param _searchString search term 
-	 * @throws Exception 	if anything matched.
 	 */
-	private String getNodeByString(Element _element, String _searchString) throws Exception
+	public String getNodeByString(Element _element, String _searchString)
 	{
 		Element element = _element;
 		
@@ -86,8 +142,8 @@ public class XMLParser
 				
 		Node node = nodeList.item(0);
 		
-		if(null == node)
-			throw new Exception("Failed to retrieve the node.");
+		if("".equals(node))
+			return "-";
 		
 		return node.getTextContent();
 	}

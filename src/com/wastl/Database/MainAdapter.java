@@ -21,6 +21,7 @@ public abstract class MainAdapter
 	protected static Context mContext = null;
 	protected static SQLiteDatabase mDatabase = null;
 	protected static MainDatabaseHelper mHelper = null;
+	private static Boolean mCreated = false;
 	
 	/** 
 	 * Constructor, saves the application context 
@@ -45,6 +46,13 @@ public abstract class MainAdapter
 				mDatabase = mHelper.getWritableDatabase();
 			}catch(SQLiteException se){ 
 				Log.e(AppFacade.GetTag(), "Error opening database"); 
+			}
+			
+			if(true == mCreated)
+			{
+				DatabaseBuilder builder = new DatabaseBuilder(mContext);
+				builder.buildDatabase();
+				mCreated = false;
 			}
 		}
 		
@@ -73,6 +81,8 @@ public abstract class MainAdapter
 			} catch(SQLException _se){ 
 				Log.e(AppFacade.GetTag(), "Could not create the database"); 
 			}
+			
+			mCreated = true;
 		}
 	
 		@Override
@@ -80,8 +90,8 @@ public abstract class MainAdapter
 			Log.w(AppFacade.GetTag(), "Upgrading database from " + _oldVersion + " to " + _newVersion);
 			
 			try{
-			_db.execSQL(DatabaseFacade.GetDropDistrict());
-			_db.execSQL(DatabaseFacade.GetDropFireDepartments());
+				_db.execSQL(DatabaseFacade.GetDropDistrict());
+				_db.execSQL(DatabaseFacade.GetDropFireDepartments());
 			}catch(SQLException _se){
 				Log.e(AppFacade.GetTag(), "Could not drop table");
 			}
@@ -89,4 +99,5 @@ public abstract class MainAdapter
 			this.onCreate(_db);
 		}
 	}
+		
 }

@@ -20,7 +20,7 @@ import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.ithtl.essapp.R;
 import com.wastl.Database.DBAdapter;
-import com.wastl.FireDepartment.FireDepartment;
+import com.wastl.FireDepartment.FireDepartmentEntity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -95,7 +95,7 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
 	
 	public void run()
 	{
-		FireDepartment fireDepartment = this.dbAdapter.readFireDepartmentByString(this.selectedItemText);
+		FireDepartmentEntity fireDepartment = this.dbAdapter.readFireDepartmentByString(this.selectedItemText);
 		
 		try{		
 			// telephone number of the selected fire department

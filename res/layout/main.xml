@@ -28,10 +28,20 @@
             android:text="@string/app_name"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/image_title"/>
-        
+                       
     </RelativeLayout>
         	
        
-    
+    <GridView  
+    android:id="@+id/gridview_Main_Navigation"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:columnWidth="90dp"
+    android:numColumns="2"
+    android:verticalSpacing="20dp"
+    android:horizontalSpacing="10dp"
+    android:stretchMode="columnWidth"
+    android:layout_below="@id/RLayout_Title" 
+    android:paddingTop="40dp" />
     	
 </RelativeLayout>

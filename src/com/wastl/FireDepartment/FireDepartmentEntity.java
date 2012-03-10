@@ -13,10 +13,10 @@ import android.content.ContentValues;
 /**
  * 
  * @author Lukas Bernreiter
- * @version 1.2.1, 19/02/2012
+ * @version 1.2.2, 10/03/2012
  * @since 1.2.1
  */
-public class FireDepartment implements IFireDepartment{
+public class FireDepartmentEntity implements IFireDepartment{
 
 	private Integer fireDepartmentId 			= 0; 
 	private Integer fireDepartmentNumber 		= 0;
@@ -31,11 +31,11 @@ public class FireDepartment implements IFireDepartment{
 	/**
 	 * Default Constructor
 	 */
-	public FireDepartment(){
+	public FireDepartmentEntity(){
 		
 	}
 	
-	public FireDepartment(Integer _fireDepartmentId)
+	public FireDepartmentEntity(Integer _fireDepartmentId)
 	{
 		this.fireDepartmentId = _fireDepartmentId;
 	}

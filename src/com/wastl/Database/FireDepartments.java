@@ -1,6 +1,8 @@
 package com.wastl.Database;
 
-// android
+// com.wastl
+import com.wastl.FireDepartment.FireDepartmentEntity;
+//android
 import android.content.Context;
 import android.database.Cursor;
 
@@ -70,5 +72,15 @@ public class FireDepartments extends MainAdapter
 			cursor.moveToFirst();
 		
 		return cursor;
+	}
+	
+	/**
+	 * Adds a new fire department to the database.
+	 * @param _relation 	the new fire department
+	 * @return 				the row id of the created fire department, or -1 otherwise.
+	 */
+	public long addFireDepartment(FireDepartmentEntity _fireDepartmentEntity)
+	{
+		return mDatabase.insert(DatabaseFacade.GetTableFireDepartments(), null, _fireDepartmentEntity.getContentValues());	
 	}
 }

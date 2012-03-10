@@ -14,7 +14,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.wastl.XML;
-import com.wastl.FireDepartment.FireDepartment;
+import com.wastl.FireDepartment.FireDepartmentEntity;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -88,7 +88,7 @@ public class DBAdapter  {
 		}
 	}
 	
-	public void addFireDepartmentRow(FireDepartment _fireDepartment){
+	public void addFireDepartmentRow(FireDepartmentEntity _fireDepartment){
 		ContentValues values = new ContentValues();
 		
 		//fill the content value with one fire department
@@ -118,9 +118,9 @@ public class DBAdapter  {
 		}
 	}
 	
-	public FireDepartment readFireDepartmentByString(String _fireDepartmentName)
+	public FireDepartmentEntity readFireDepartmentByString(String _fireDepartmentName)
 	{
-		FireDepartment tmp = new FireDepartment();
+		FireDepartmentEntity tmp = new FireDepartmentEntity();
 		
 		//SQL Query
 		Cursor cursor;
@@ -302,7 +302,7 @@ public class DBAdapter  {
 				String location = xml.getNodeByString(element, "Location").getTextContent();
 				String phoneNumber = xml.getNodeByString(element, "Phone").getTextContent();
 				
-				FireDepartment fireDepartment = new FireDepartment();								
+				FireDepartmentEntity fireDepartment = new FireDepartmentEntity();								
 				
 				fireDepartment.setFireDepartmentId(i);
 				fireDepartment.setFireDepartmentDistrictID(Integer.parseInt(bazIdNode.getTextContent()));
