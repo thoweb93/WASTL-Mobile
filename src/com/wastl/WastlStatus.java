@@ -9,6 +9,9 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.wastl.Entity.DistrictEntity;
+import com.wastl.Entity.DistrictMap;
+
 
 import android.util.Log;
 
@@ -21,6 +24,9 @@ import android.util.Log;
  */
 public class WastlStatus 
 {	
+	private static Integer mCountMissions = 0;
+	private static Integer mCountFireDepartments = 0;
+	
 	/**
 	 * Default constructor.
 	 */
@@ -30,7 +36,7 @@ public class WastlStatus
 		new File(AppFacade.GetPath()).mkdirs();
 	}
 	
-	public void downloadCurrentStatus()
+	private void downloadCurrentStatus()
 	{
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
@@ -58,8 +64,37 @@ public class WastlStatus
 			} catch (IOException _e) {
 				Log.e(AppFacade.GetTag(), _e.getMessage());
 			}
-			
 		}
+	}
+	
+	public void refreshStatus()
+	{
+		// Clear the current list.
+		DistrictMap.getMap().clear();
 		
+		// Get the current status of Lower Austria
+		this.downloadCurrentStatus();
+		
+		for(Integer districtId : DistrictEntity.FetchAllIds())
+		{	
+			// Create a new entity
+			DistrictEntity district = DistrictMap.getInstance(districtId);
+								
+			mCountMissions += district.getCountMission();
+			mCountFireDepartments += district.getCountFireDepartment();
+		}
+	}
+	
+	public void getFireDepartmentStatus(String _bazId)
+	{
+		
+	}
+	
+	public static Integer GetCountMissions() {
+		return mCountMissions;
+	}
+	
+	public static Integer GetCountFireDepartments(){
+		return mCountFireDepartments;
 	}
 }

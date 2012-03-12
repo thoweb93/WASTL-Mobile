@@ -82,7 +82,25 @@ public class XMLParser
 		return district;
 	}
 	
+	public NodeList getListOfFireDepartments(String _xmlFile)
+	{
+		NodeList fireDepartments = null;
+		
+		try {
+			DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();		
+			DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+			Document doc = docBuilder.parse(new File(_xmlFile));
+			
+			doc.getDocumentElement().normalize();			
+			
+			fireDepartments = doc.getElementsByTagName("aFFNr");
 
+		} catch (Exception e) {
+			Log.e(AppFacade.GetTag(), e.getMessage());
+		} 
+		
+		return fireDepartments;
+	}
 	
 	public NodeList load_Fire_Department_XML(Context _context)
 	{

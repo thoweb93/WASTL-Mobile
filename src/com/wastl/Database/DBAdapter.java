@@ -14,7 +14,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import com.wastl.XML;
-import com.wastl.FireDepartment.FireDepartmentEntity;
+import com.wastl.Entity.FireDepartmentEntity;
 
 import android.content.ContentValues;
 import android.content.Context;

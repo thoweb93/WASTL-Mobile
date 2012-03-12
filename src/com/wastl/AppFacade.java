@@ -17,7 +17,7 @@ public class AppFacade
 	private static final File SD = Environment.getExternalStorageDirectory();
 	private static final String FILENAME = "wastlmain.xml";
 	private static final String URL = "http://www.feuerwehr-krems.at/CodePages/Wastl/GetDaten/getwastlmain.asp";
-	private static final String URL_DISTRICT = "http://www.feuerwehr-krems.at/CodePages/Wastl/GetDaten/GetWastlBezirk.asp";
+	private static final String URL_DISTRICT = "http://www.feuerwehr-krems.at/CodePages/Wastl/GetDaten/GetWastlBezirk.asp?Bezirk=";
 	
 	/** Retrieves the tag of the application. Used for logging */ 
 	public static String GetTag(){ return TAG;}

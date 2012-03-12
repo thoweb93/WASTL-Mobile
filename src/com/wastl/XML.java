@@ -25,11 +25,11 @@ import com.ithtl.essapp.R;
 import com.wastl.Activity.MainActivity;
 import com.wastl.Entity.DistrictEntity;
 import com.wastl.Entity.DistrictMap;
+import com.wastl.Entity.FireDepartmentEntity;
 import com.wastl.Enums.EnumDistricts;
 import com.wastl.Enums.EnumFireDepartments;
 import com.wastl.Enums.EnumFireDepartments.ID_FireDistricts;
-import com.wastl.FireDepartment.FireDepartmentEntity;
-import com.wastl.FireDepartment.FireDepartmentFactory;
+import com.wastl.FireDepartment.FireDepartmentMap;
 
 import android.content.Context;
 import android.content.res.Resources;

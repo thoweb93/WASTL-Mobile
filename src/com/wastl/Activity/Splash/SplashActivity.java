@@ -1,7 +1,7 @@
 package com.wastl.Activity.Splash;
 
 import com.ithtl.essapp.R;
-import com.wastl.XMLWrapper;
+import com.wastl.WastlStatus;
 import com.wastl.Activity.MainActivity;
 
 import android.app.Activity;
@@ -17,7 +17,7 @@ import android.os.Bundle;
  */
 public class SplashActivity extends Activity implements Runnable {
 
-	private XMLWrapper mXMLWrapper = null;
+	private WastlStatus mStatus = null;
 	private Thread mSplash = null;
 	
 	/** Called when the activity is first created. */
@@ -37,8 +37,8 @@ public class SplashActivity extends Activity implements Runnable {
 	
 	public void run() {
 		synchronized (this) {
-			mXMLWrapper = new XMLWrapper();
-			mXMLWrapper.refreshStatus();
+			mStatus = new WastlStatus();
+			mStatus.refreshStatus();
 			
 			// When finished start the main activity
 			startActivity(new Intent(SplashActivity.this,MainActivity.class));

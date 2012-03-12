@@ -16,10 +16,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 /**
+ * Displays the districts.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.1, 19/02/2012
- * 
+ * @version 1.2.2, 12/03/2012
+ * @since 1.2.1
  */
 public class MissionActivity extends Activity implements Runnable {
 

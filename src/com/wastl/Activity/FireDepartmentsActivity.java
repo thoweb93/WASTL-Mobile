@@ -10,7 +10,7 @@ import com.ithtl.essapp.R;
 import com.wastl.XML;
 import com.wastl.Enums.EnumFireDepartments;
 import com.wastl.Enums.EnumFireDepartments.ID_FireDistricts;
-import com.wastl.FireDepartment.FireDepartmentFactory;
+import com.wastl.FireDepartment.FireDepartmentMap;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -71,9 +71,9 @@ public class FireDepartmentsActivity extends ListActivity implements Runnable {
        // this.xml.setFireDepartments(id_FireDistrict);
         
         //fill string[]
-        FireDepartmentFactory.fillFireDepartmentsForList(false);
+        FireDepartmentMap.fillFireDepartmentsForList(false);
         
-        if(FireDepartmentFactory.getFireDepartmentList().length < 1)
+        if(FireDepartmentMap.getFireDepartmentList().length < 1)
     	{        		
     		xml = new XML();	
 			xml.initaliazeObjects();			
@@ -88,7 +88,7 @@ public class FireDepartmentsActivity extends ListActivity implements Runnable {
         	progressDialog.dismiss();                        
         	
         	//set data
-            setListAdapter(new ArrayAdapter<String>(context,R.layout.list_item, FireDepartmentFactory.getFireDepartmentList()));
+            setListAdapter(new ArrayAdapter<String>(context,R.layout.list_item, FireDepartmentMap.getFireDepartmentList()));
             
             // retrieve the listView
             ListView districtListView = getListView();

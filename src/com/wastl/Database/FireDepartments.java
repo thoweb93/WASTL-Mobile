@@ -1,7 +1,7 @@
 package com.wastl.Database;
 
 // com.wastl
-import com.wastl.FireDepartment.FireDepartmentEntity;
+import com.wastl.Entity.FireDepartmentEntity;
 //android
 import android.content.Context;
 import android.database.Cursor;

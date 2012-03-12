@@ -7,7 +7,7 @@ import android.content.Context;
 
 import com.wastl.XMLParser;
 import com.wastl.Entity.DistrictEntity;
-import com.wastl.FireDepartment.FireDepartmentEntity;
+import com.wastl.Entity.FireDepartmentEntity;
 
 /**
  * Parses the raw XML files, which are containing the data for the database.

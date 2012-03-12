@@ -8,21 +8,23 @@ package com.wastl.FireDepartment;
 
 import java.util.HashMap;
 
+import com.wastl.Entity.FireDepartmentEntity;
+
 /**
  * 
  * @author Lukas Bernreiter
  * @version 1.2.1, 19/02/2012
  * 
  */
-public class FireDepartmentFactory {
+public class FireDepartmentMap {
 
 	//objects
 	private static java.util.Map<Integer, FireDepartmentEntity> instanceMap = new HashMap<Integer, FireDepartmentEntity>();
-	private static FireDepartmentFactory instance = null;
+	private static FireDepartmentMap instance = null;
 	private static String currentBAZId = null;
 	private static String[] FireDepartmentsStatus;
 	
-	private FireDepartmentFactory()
+	private FireDepartmentMap()
 	{
 		
 	}
@@ -44,10 +46,10 @@ public class FireDepartmentFactory {
 		return fireDepartment;
 	}
 	//getInstance for singleton
-	public static FireDepartmentFactory getInstance()
+	public static FireDepartmentMap getInstance()
 	{
 		if(instance==null)
-			instance = new FireDepartmentFactory();
+			instance = new FireDepartmentMap();
 		return instance;
 	}
 	//remove a instance from the hashMap

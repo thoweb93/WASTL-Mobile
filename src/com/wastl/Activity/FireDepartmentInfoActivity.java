@@ -20,7 +20,7 @@ import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.ithtl.essapp.R;
 import com.wastl.Database.DBAdapter;
-import com.wastl.FireDepartment.FireDepartmentEntity;
+import com.wastl.Entity.FireDepartmentEntity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
