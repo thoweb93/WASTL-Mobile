@@ -29,9 +29,7 @@
         
         <activity 
             android:name="com.wastl.Activity.MainActivity"
-             android:screenOrientation="portrait"
-             android:label="WASTL" 
-             android:theme="@android:style/Theme.NoTitleBar" >
+            android:theme="@android:style/Theme.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -40,11 +38,10 @@
         </activity>            
         
         <activity android:name="com.wastl.Activity.MapActivity"
-        		  android:label="WASTL" 
         		  android:theme="@android:style/Theme.NoTitleBar" />
 		
 		<activity android:name="com.wastl.Activity.MissionActivity"
-				  android:label="Aktuelle Einsätze" />
+				  android:theme="@android:style/Theme.NoTitleBar" />
 		
 		<activity android:name="com.wastl.Activity.FireDepartmentsActivity"
 				  android:label="Feuerwehren im Bezirk" />

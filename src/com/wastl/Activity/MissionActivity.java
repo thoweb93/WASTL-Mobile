@@ -1,22 +1,19 @@
-/*
- * Filename: MissionActivity.java
- * Author: Lukas Bernreiter
- * Last change: 08.10.2011
- * Description: Activity class of the mission screen
- */
 package com.wastl.Activity;
 
 // com.wastl
 import com.ithtl.essapp.R;
 import com.wastl.Entity.DistrictMap;
-import com.wastl.EventListener.EventListener;
+import com.wastl.EventListener.EventListener_MissionActivity;
 // Android
-import android.app.ListActivity;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.app.Activity;
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * 
@@ -24,44 +21,57 @@ import android.widget.ListView;
  * @version 1.2.1, 19/02/2012
  * 
  */
-public class MissionActivity extends ListActivity {
+public class MissionActivity extends Activity implements Runnable {
 
-	private EventListener eventListener;	
+	private EventListener_MissionActivity mEventListener_MissionActivity = null;
+	private String[] mContent = null;
+	private ListView mListView = null;
+	private Context mContext = null;
+	private ProgressDialog mProgressDialog = null;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        // initialize objects
+        // Set layout and title
+        this.setContentView(R.layout.list_view);        
+        ((TextView)this.findViewById(R.id.textView_Title)).setText(R.string.mission_title);
+        
+        // Initialize objects
         this.initializeObjects();                                     
-        
-        //fill the string[] with districts
-        DistrictMap.fillDistrictsForList();
                  
-        //set Data
-        this.setListAdapter(new ArrayAdapter<String>(this,R.layout.list_item, DistrictMap.getDistrictsForList()));
-        
-        //retrieve listView
-        ListView districtListView = this.getListView();
-        
-        districtListView.setTextFilterEnabled(true);
-                        
-        this.setListViewStyle(districtListView);
-        
-        //set eventListener
-        districtListView.setOnItemClickListener(this.eventListener);
+        // Start working thread
+        Thread thread = new Thread(this);
+        thread.start();
     }
 
 	private void initializeObjects()
 	{
-		this.eventListener 	= new EventListener(this);  	
+		this.mEventListener_MissionActivity = new EventListener_MissionActivity(this);
+		this.mEventListener_MissionActivity.setEvents();
+		
+		this.mListView = (ListView)this.findViewById(R.id.listView_Content);
+		
+		this.mContext = this.getApplicationContext();
+		
+		this.mProgressDialog = ProgressDialog.show(this, "", "List wird bearbeitet.", true);
 	}
-	
-	private void setListViewStyle(ListView _listView)
-	{
-		_listView.setBackgroundColor(Color.GRAY);
-		_listView.setPadding(10, 10, 10, 10);
-		_listView.setDivider(new ColorDrawable(Color.GRAY));
-		_listView.setDividerHeight(15);
-		_listView.setCacheColorHint(0);
+		
+	public void run() {
+        DistrictMap.fillDistrictsForList();
+		
+		// Fetch result
+        this.mContent = DistrictMap.getDistrictsForList();
+		
+		// Update listView
+        handler.sendEmptyMessage(0);
 	}
+		
+	private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+        	mProgressDialog.dismiss();
+                 
+        	mListView.setAdapter(new ArrayAdapter<String>(mContext, R.layout.list_item, mContent));    	
+        }
+	}; 
 }

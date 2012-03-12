@@ -41,7 +41,7 @@ public class BrowseDistrictsActivity extends Activity implements Runnable {
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.setContentView(R.layout.browse_districts);
+        this.setContentView(R.layout.list_view);
         
         // initialize all objects
         this.initializeObjects();
@@ -59,7 +59,7 @@ public class BrowseDistrictsActivity extends Activity implements Runnable {
 
 		this.mContext = this.getApplicationContext();
 		
-		this.mListView = (ListView)this.findViewById(R.id.listView_Browse_Districts);
+		this.mListView = (ListView)this.findViewById(R.id.listView_Content);
 		
 		this.mProgressDialog = ProgressDialog.show(this, "", this.getString(R.string.create_database), true);
 	}

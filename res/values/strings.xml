@@ -12,4 +12,7 @@
     <!-- Database -->
     <string name="create_database">Datenbank wird erstellt</string>
     
+    <!-- Mission -->
+    <string name="mission_title">Aktuelle Einsätze</string>
+    
 </resources>
