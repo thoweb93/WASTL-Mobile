@@ -1,9 +1,3 @@
-/*
- * Filename: ESSAppActivity.java
- * Author: Lukas Bernreiter
- * Last change: 08.10.2011
- * Description: Activity class of the main window
- */
 package com.wastl.Activity;
 
 // com.ithtl.essap
@@ -21,7 +15,7 @@ import android.widget.GridView;
  * Main activity, displays the current status and provides buttons for further interaction.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.2, 08/03/2012
+ * @version 1.2.3, 26/03/2012
  * @since 1.2.1
  */
 public class MainActivity extends Activity {
@@ -55,4 +49,5 @@ public class MainActivity extends Activity {
     public GridView getGridViewNavigation(){
     	return (GridView)this.findViewById(R.id.gridview_Main_Navigation);
     }
+    
 }

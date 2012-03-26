@@ -12,7 +12,8 @@ import android.widget.ImageView;
 /**
  * 
  * @author Patrik Kimmeswenger
- *
+ * @version 1.2.3, 26/03/2012
+ * @since 1.2.1
  */
 
 public class ZoomAbleImageView extends ImageView {

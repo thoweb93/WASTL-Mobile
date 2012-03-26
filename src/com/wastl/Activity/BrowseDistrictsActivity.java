@@ -61,7 +61,7 @@ public class BrowseDistrictsActivity extends Activity implements Runnable {
 		
 		this.mListView = (ListView)this.findViewById(R.id.listView_Content);
 		
-		this.mProgressDialog = ProgressDialog.show(this, "", this.getString(R.string.create_database), true);
+		this.mProgressDialog = ProgressDialog.show(this, "", this.getString(R.string.create_Database), true);
 	}
 	
 	public void run()

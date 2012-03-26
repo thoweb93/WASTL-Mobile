@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.ithtl.essapp"
-      android:versionCode="12"
-      android:versionName="1.2.2">
+      android:versionCode="13"
+      android:versionName="1.2.3">
       
     <uses-sdk android:minSdkVersion="8" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -35,7 +35,21 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-        </activity>            
+            
+             <meta-data android:name="android.app.default_searchable"
+                android:value="com.wastl.Activity.SearchActivity"/>
+        </activity>   
+        
+        <!-- Displays the search results -->
+        <activity 
+            android:name="com.wastl.Activity.SearchActivity"
+            android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable"
+                android:resource="@xml/searchable"/>
+        </activity>              
         
         <activity android:name="com.wastl.Activity.MapActivity"
         		  android:theme="@android:style/Theme.NoTitleBar" />
@@ -48,11 +62,11 @@
 		
 		<activity android:name="com.wastl.Activity.BrowseDistrictsActivity"
 				  android:label="Bezirksalarmzentralen in NÖ"
-				  android:theme="@android:style/Theme.Light" />
+				  android:theme="@android:style/Theme.NoTitleBar" />
 		
 		<activity android:name="com.wastl.Activity.BrowseFireDepartmentsActivity"
 				  android:label="Feuerwehren im Bezirk" 
-				  android:theme="@android:style/Theme.Black" />
+				  android:theme="@android:style/Theme.NoTitleBar" />
 		
 		<activity 
 		    android:name="com.wastl.Activity.FireDepartmentInfoActivity" 

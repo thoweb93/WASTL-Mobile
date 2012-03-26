@@ -10,9 +10,10 @@
     
     
     <!-- Database -->
-    <string name="create_database">Datenbank wird erstellt</string>
+    <string name="create_Database">Datenbank wird erstellt</string>
+    <string name="search_Database">Datenbank durchsuchen</string>
     
     <!-- Mission -->
-    <string name="mission_title">Aktuelle Einsätze</string>
+    <string name="mission_Title">Aktuelle Einsätze</string>
     
 </resources>

@@ -48,7 +48,7 @@ public class XMLParser
 	 * @param _id the id of the district.
 	 * @return a instance of DistrictEntity, containing all details.
 	 */
-	public DistrictEntity getDataOfDistrict(String _id)
+	public DistrictEntity getDataOfDistrict(Integer _id)
 	{
 		Element districtInfo = null;
 		
@@ -59,7 +59,7 @@ public class XMLParser
 			
 			doc.getDocumentElement().normalize();			
 			
-			districtInfo = doc.getElementById(_id);
+			districtInfo = doc.getElementById(_id.toString());
 			
 			districtInfo.getTextContent();
 						
@@ -71,7 +71,7 @@ public class XMLParser
 		DistrictEntity district = new DistrictEntity();
 		
 		try{
-			district.setId(Integer.parseInt(_id));
+			district.setId(_id);
 			district.setName(this.getNodeByString(districtInfo, "cFriendlyName"));
 			district.setCountMission(Integer.parseInt(this.getNodeByString(districtInfo, "CountEinsatz")));
 			district.setCountFireDepartment(Integer.parseInt(this.getNodeByString(districtInfo, "CountFeuerwehr")));

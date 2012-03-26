@@ -1,9 +1,3 @@
-/*
- * Filename: District.java
- * Author: Lukas Bernreiter
- * Last change: 08.10.2011
- * Description: Provides the structure for a District instance
- */
 package com.wastl.Entity;
 
 import com.wastl.Database.DatabaseFacade;
@@ -14,7 +8,7 @@ import android.content.ContentValues;
  * Defines the structure of a district entity.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.2, 19/02/2012
+ * @version 1.2.3, 19/02/2012
  * @since 1.2.1
  */
 public class DistrictEntity extends DistrictIds {
@@ -137,5 +131,14 @@ public class DistrictEntity extends DistrictIds {
 	public static Integer[] FetchAllIds()
 	{
 		return fetchAllIds();
+	}
+	
+	/**
+	 * Checks the state of this district.
+	 * @return True if a fire department is currently employing, false otherwise.
+	 */
+	public Boolean checkState()
+	{
+		return this.mCountFireDepartment > 0 || this.mCountMission > 0;
 	}
 }

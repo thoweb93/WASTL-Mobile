@@ -2,6 +2,7 @@ package com.wastl.EventListener;
 
 // android
 import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -15,7 +16,7 @@ import com.wastl.Activity.MissionActivity;
  * Contains and handles every event of the main activity.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.2, 08/03/2012
+ * @version 1.2.3, 08/03/2012
  * @since 1.2.2
  */
 public class EventListener_MainActivity implements OnItemClickListener
@@ -45,25 +46,44 @@ public class EventListener_MainActivity implements OnItemClickListener
 		
 		switch(_position)
 		{
+		
+		// Stats
 		case 0:
 			break;
+			
+		// Missions
 		case 1:
 			intent = new Intent(_view.getContext(), MissionActivity.class);
 			break;
+			
+		// Map
 		case 2:
 			intent = new Intent(_view.getContext(), MapActivity.class);
 			break;
+			
+		// Database
 		case 3:
 			intent = new Intent(_view.getContext(), BrowseDistrictsActivity.class);	
 			break;
+			
+			
+		// Search
 		case 4:
+			this.mMain.onSearchRequested();
 			break;
+			
+		// WASTL homepage
 		case 5:
+			Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.feuerwehr-krems.at/Warnung/Teaser.asp"));
+			this.mMain.startActivity(browserIntent);
 			break;
+			
+			
 		default:
 			return;
 		}
 		
-		this.mMain.startActivity(intent);
+		if(null != intent)
+			this.mMain.startActivity(intent);
 	}
 }

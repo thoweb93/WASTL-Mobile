@@ -12,7 +12,7 @@ import com.wastl.Enums.EnumDistricts;
  * Stores a list of districts in a hash map.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.2, 19/02/2012
+ * @version 1.2.3, 26/03/2012
  * @version 1.2.1
  */
 public class DistrictMap
@@ -31,9 +31,10 @@ public class DistrictMap
 	private static void createInstance(Integer _id)
 	{
 		XMLParser parser = new XMLParser(AppFacade.GetFullPath());
-		DistrictEntity district = parser.getDataOfDistrict(_id.toString());
+		DistrictEntity district = parser.getDataOfDistrict(_id);
 		
-		instanceMap.put(_id, district);
+		if(district.checkState())
+			instanceMap.put(_id, district);		
 	}
 	
 	public static DistrictEntity getInstance(Integer _id)
@@ -41,9 +42,9 @@ public class DistrictMap
 		if(!(instanceMap.containsKey(_id)))
 				createInstance(_id);
 		
-		DistrictEntity bezirk = instanceMap.get(_id);		
+		DistrictEntity district = instanceMap.get(_id);		
 		
-		return bezirk;
+		return district;
 	}
 	public static DistrictMap instance()
 	{
@@ -70,7 +71,7 @@ public class DistrictMap
 	
 	public static void fillDistrictsForList()
 	{
-		if(instanceMap.size()<1)
+		if(instanceMap.size() < 1)
 		{
 			XML xml = new XML();
 			xml.downloadAndFillDistrictMap();

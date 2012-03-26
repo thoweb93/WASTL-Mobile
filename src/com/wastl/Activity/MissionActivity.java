@@ -19,7 +19,7 @@ import android.widget.TextView;
  * Displays the districts.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.2, 12/03/2012
+ * @version 1.2.2, 26/03/2012
  * @since 1.2.1
  */
 public class MissionActivity extends Activity implements Runnable {
@@ -35,7 +35,7 @@ public class MissionActivity extends Activity implements Runnable {
         
         // Set layout and title
         this.setContentView(R.layout.list_view);        
-        ((TextView)this.findViewById(R.id.textView_Title)).setText(R.string.mission_title);
+        ((TextView)this.findViewById(R.id.textView_Title)).setText(R.string.mission_Title);
         
         // Initialize objects
         this.initializeObjects();                                     
@@ -54,7 +54,7 @@ public class MissionActivity extends Activity implements Runnable {
 		
 		this.mContext = this.getApplicationContext();
 		
-		this.mProgressDialog = ProgressDialog.show(this, "", "List wird bearbeitet.", true);
+		this.mProgressDialog = ProgressDialog.show(this, "", "Liste wird bearbeitet.", true);
 	}
 		
 	public void run() {
