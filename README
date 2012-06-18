@@ -1,10 +1,4 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~WASTL MOBILE~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Platform: Android 2.2 (API 8)
-Description: WASTL Mobile is a free service to retrieve information about currently employing fire departments in Lower Austria.
-
-ToDos:
-	- Rewrite database connection - in process
-	- Seperate eventlistener into more classes for each activity
-	- Rewrite Baz enum
-	- Bugfixing
+Description: WASTL Mobile is a free service that retrieves information about current employed fire departments in Lower Austria.
