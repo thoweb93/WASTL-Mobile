@@ -1,8 +1,10 @@
 package com.wastl.Activity;
 
 // com.wastl
+import java.util.ArrayList;
+
 import com.ithtl.essapp.R;
-import com.wastl.Entity.DistrictMap;
+import com.wastl.Entity.Hierarchy;
 import com.wastl.EventListener.EventListener_MissionActivity;
 // Android
 import android.app.Activity;
@@ -25,7 +27,7 @@ import android.widget.TextView;
 public class MissionActivity extends Activity implements Runnable {
 
 	private EventListener_MissionActivity mEventListener_MissionActivity = null;
-	private String[] mContent = null;
+	private ArrayList<String> mContent = null;
 	private ListView mListView = null;
 	private Context mContext = null;
 	private ProgressDialog mProgressDialog = null;
@@ -58,10 +60,11 @@ public class MissionActivity extends Activity implements Runnable {
 	}
 		
 	public void run() {
-        DistrictMap.fillDistrictsForList();
+
+		Hierarchy districtHierarchy = new Hierarchy();
 		
-		// Fetch result
-        this.mContent = DistrictMap.getDistrictsForList();
+		this.mContent = districtHierarchy.getActiveDistricts();
+		
 		
 		// Update listView
         handler.sendEmptyMessage(0);

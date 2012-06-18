@@ -9,8 +9,6 @@ import android.util.AttributeSet;
  * @author Patrik Kimmeswenger
  *
  */
-
-
 public class WastlMap extends ZoomAbleImageView
 {		
 	public static Drawable map;

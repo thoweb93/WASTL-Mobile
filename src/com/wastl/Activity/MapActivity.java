@@ -13,8 +13,6 @@ import com.wastl.BitmapCombinator;
 import com.ithtl.essapp.R;
 import com.wastl.WastlMap;
 import com.wastl.Entity.DistrictEntity;
-import com.wastl.Entity.DistrictMap;
-import com.wastl.Enums.EnumDistricts;
 import com.ithtl.essapp.R.id;
 // Android
 import android.app.Activity;
@@ -86,10 +84,13 @@ public class MapActivity extends Activity implements Runnable{
 	{
 		Drawable map = context.getResources().getDrawable(R.drawable.niederoesterreich);
 		
+		/* TODO Replace map with hierarchy
+		 * TODO Replace enum with new id class (Entity.DistrictIds)
 		for(int i=0; i < DistrictMap.getMap().size(); i++)
 		{
 			
 			Integer districtId = ((DistrictEntity)(DistrictMap.getMap().values().toArray()[i])).getId();
+			
 			
 			switch(districtId)
 			{
@@ -232,7 +233,8 @@ public class MapActivity extends Activity implements Runnable{
 			}
 		
 		
-		}
+		}*/
+		
 		WastlMap.map = map;
 		
 		handler.sendEmptyMessage(0);
@@ -240,7 +242,8 @@ public class MapActivity extends Activity implements Runnable{
 	
 	private Drawable switchAlert(Integer _bezirk, Drawable _map, Integer _low, Integer _middle, Integer _high)
 	{
-		Integer missions = ((DistrictEntity)(DistrictMap.getMap().values().toArray()[_bezirk])).getCountFireDepartment();
+		/* TODO Replace map with hierarchy
+		 * Integer missions = ((DistrictEntity)(DistrictMap.getMap().values().toArray()[_bezirk])).getCountFireDepartment();
 		
 		if(missions == 0)
 			return _map;
@@ -265,7 +268,7 @@ public class MapActivity extends Activity implements Runnable{
 				_map = BitmapCombinator.combinate(_map, context.getResources().getDrawable(_high));
 				break;
 		}
-		
+		*/
 		return _map;
 	
 	}

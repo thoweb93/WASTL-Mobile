@@ -31,7 +31,8 @@ import android.widget.SimpleCursorAdapter;
  * @version 1.2.2, 10/03/2012
  * @since 1.2.1
  */
-public class BrowseDistrictsActivity extends Activity implements Runnable {
+public class BrowseDistrictsActivity extends Activity implements Runnable 
+{
 		
 	private EventListener_BrowseDistrictsActivity mEventListener_BrowseDistricts = null;
 	private ProgressDialog mProgressDialog = null;

@@ -24,9 +24,7 @@ import org.apache.http.util.ByteArrayBuffer;
 import com.ithtl.essapp.R;
 import com.wastl.Activity.MainActivity;
 import com.wastl.Entity.DistrictEntity;
-import com.wastl.Entity.DistrictMap;
 import com.wastl.Entity.FireDepartmentEntity;
-import com.wastl.Enums.EnumDistricts;
 import com.wastl.Enums.EnumFireDepartments;
 import com.wastl.Enums.EnumFireDepartments.ID_FireDistricts;
 import com.wastl.FireDepartment.FireDepartmentMap;
@@ -46,7 +44,7 @@ import android.widget.TextView;
 public class XML {
 
 	//Objects
-	private EnumDistricts bezirke = new EnumDistricts();	
+//	private EnumDistricts bezirke = new EnumDistricts();	
 	private Element bezirkInfo;
 	private MainActivity essApp;	
 	private Boolean removedLWZ = false;
@@ -79,7 +77,7 @@ public class XML {
 		if(this.removedLWZ)
 			districtsEmploying -= 1;
 		
-		districtsEmploying += DistrictMap.getMap().size();
+//		districtsEmploying += DistrictMap.getMap().size();
 		
 		// get the amount of missions and fire departments employing
 		missionCount = this.countMissions();
@@ -185,7 +183,7 @@ public class XML {
 		missionCount 			= 0;
 		districtsEmploying 		= 0;
 		fireDepartmentCount 	= 0;
-		DistrictMap.getMap().clear();
+//		DistrictMap.getMap().clear();
 	}
 	
 	/** Counts every mission from every district stored in the hashMap */
@@ -193,6 +191,7 @@ public class XML {
 	{
 		int missions = 0;
 		
+		/*
 		for(DistrictEntity _bezirk: DistrictMap.getMap().values())
 		{
 			int newCount = _bezirk.getId();
@@ -200,7 +199,7 @@ public class XML {
 			DistrictEntity bezirk = DistrictMap.getInstance(newCount);
 			
 			missions += bezirk.getCountMission();
-		}	
+		}	*/
 		
 		return missions;
 	}
@@ -208,7 +207,7 @@ public class XML {
 	private int countFireDepartments()
 	{
 		int departments = 0;
-		
+		/*
 		for(DistrictEntity _bezirk: DistrictMap.getMap().values())
 		{
 			int newCount = _bezirk.getId();
@@ -217,7 +216,7 @@ public class XML {
 			
 			departments += bezirk.getCountFireDepartment();
 		}	
-		
+		*/
 		return departments;
 	}
 	/** fills the hashMap with a instance of every district, containing the current count of missions
@@ -225,6 +224,7 @@ public class XML {
 	public void fillDistricts()
 	{
 		// clear the list
+		/*
 		DistrictMap.getMap().clear();
 		
 		for(String districtId: this.getIds())
@@ -235,20 +235,20 @@ public class XML {
 			
 			if(district.getCountFireDepartment().equals(0) && district.getCountMission().equals(0)){
 				DistrictMap.removeBezirk(district.getId());				
-				if(district.getId().equals(Integer.parseInt(this.bezirke.ID_LWZ)))
+//				if(district.getId().equals(Integer.parseInt(this.bezirke.ID_LWZ)))
 					this.removedLWZ = false;
 			}else
-				if(district.getId().equals(Integer.parseInt(this.bezirke.ID_LWZ)))
+//				if(district.getId().equals(Integer.parseInt(this.bezirke.ID_LWZ)))
 					this.removedLWZ = true;
-		}
+		}*/
 	}
 	public void fillDistrictsFull()
-	{
+	{/*
 		// clear the list
 		DistrictMap.getMap().clear();
 		
 		for(String bezirkID: this.getIds())
-			DistrictMap.getInstance(Integer.parseInt(bezirkID));		
+			DistrictMap.getInstance(Integer.parseInt(bezirkID));*/		
 	}
 	
 	/** Retrieves the content of an parent Item (_searchPattern) */
@@ -342,9 +342,9 @@ public class XML {
 
 		ArrayList<String> bezirksIDs = new ArrayList<String>();
 		
-		for(EnumDistricts.ID_Districts district: EnumDistricts.ID_Districts.values())
+//		for(EnumDistricts.ID_Districts district: EnumDistricts.ID_Districts.values())
 		{
-			bezirksIDs.add(this.bezirke.getID(district));
+//			bezirksIDs.add(this.bezirke.getID(district));
 		}		
 		
 		return bezirksIDs;

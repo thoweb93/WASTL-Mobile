@@ -19,7 +19,6 @@ import com.google.android.maps.MapView;
 import com.google.android.maps.Overlay;
 import com.google.android.maps.OverlayItem;
 import com.ithtl.essapp.R;
-import com.wastl.Database.DBAdapter;
 import com.wastl.Entity.FireDepartmentEntity;
 
 import android.app.ProgressDialog;
@@ -41,6 +40,7 @@ import android.widget.TextView;
  * @author Lukas Bernreiter
  * @version 1.2.1, 19/02/2012
  * 
+ * TODO Rewrite database connection with new database adapter
  */
 public class FireDepartmentInfoActivity extends com.google.android.maps.MapActivity implements Runnable {
 
@@ -58,7 +58,7 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
 	private double longitude;
 	
 	// intern
-	private DBAdapter dbAdapter;
+//	private DBAdapter dbAdapter;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +81,7 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
         this.selectedItemText 	= this.getIntent().getExtras().getString("selectedItemText");        
         this.context 			= this.getApplicationContext();        
         this.mapView 			= (MapView) this.findViewById(R.id.mapview);		
-        this.dbAdapter 			= new DBAdapter(this.context);                       
+//        this.dbAdapter 			= new DBAdapter(this.context);                       
 		this.mapController 		= mapView.getController();
 	}
 	// show the progress dialog and start a tread to read the clicked fire department.
@@ -95,7 +95,7 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
 	
 	public void run()
 	{
-		FireDepartmentEntity fireDepartment = this.dbAdapter.readFireDepartmentByString(this.selectedItemText);
+		/*FireDepartmentEntity fireDepartment = this.dbAdapter.readFireDepartmentByString(this.selectedItemText);
 		
 		try{		
 			// telephone number of the selected fire department
@@ -111,7 +111,7 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
 							
 			
 		}catch(Exception e){Log.d("WASTL", e.getMessage());}
-		
+		*/
 		this.handler.sendEmptyMessage(0);
 	}
 	private Handler handler = new Handler() {

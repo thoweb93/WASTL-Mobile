@@ -172,7 +172,7 @@ public class DistrictEntity extends DistrictIds implements Entity {
 		return size;
 	}
 
-	public ArrayList<String> getChildren() {
+	public ArrayList<String> getChildrenName() {
 		
 		ArrayList<String> children = new ArrayList<String>();
 		
@@ -181,4 +181,12 @@ public class DistrictEntity extends DistrictIds implements Entity {
 		
 		return children;
 	}	
+	
+	public Entity getEntity(int _key)
+	{
+		for(Iterator<Entity> it = this.mChildren.iterator(); it.hasNext();)
+			if(_key == ((DistrictEntity)it.next()).getId())
+				return it.next();
+		return null;
+	}
 }

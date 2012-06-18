@@ -10,7 +10,7 @@ import android.database.Cursor;
  * Exposes methods for accessing the fire department's table.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.2, 04/03/2012
+ * @version 1.2.4, 18/06/2012
  * @since 1.2.2
  */
 public class FireDepartments extends MainAdapter 
@@ -67,6 +67,23 @@ public class FireDepartments extends MainAdapter
 		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableFireDepartments(),
 				new String[]{DatabaseFacade.GetColumnFdId(), DatabaseFacade.GetColumnFdBazId(), DatabaseFacade.GetColumnFdName(), DatabaseFacade.GetColumnFdLocation(), DatabaseFacade.GetColumnFdPhoneNumber()},
 				DatabaseFacade.GetColumnFdBazId()+ "=" + _bazId, null, null, null, null);
+		
+		if(null != cursor)
+			cursor.moveToFirst();
+		
+		return cursor;
+	}
+	
+	/**
+	 * Queries the database with a given search term.
+	 * @param _searchstring 	Will be used in the query
+	 * @return 					A Cursor containing the matched fire department
+	 */
+	public Cursor fetchSimilarFireDepartments(String _searchstring)
+	{
+		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableFireDepartments(),
+				new String[]{DatabaseFacade.GetColumnFdId(), DatabaseFacade.GetColumnFdBazId(), DatabaseFacade.GetColumnFdName(), DatabaseFacade.GetColumnFdLocation(), DatabaseFacade.GetColumnFdPhoneNumber()},
+				DatabaseFacade.GetColumnFdName() + " LIKE '%" + _searchstring +"%'", null, null, null, null);
 		
 		if(null != cursor)
 			cursor.moveToFirst();

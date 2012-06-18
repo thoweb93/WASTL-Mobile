@@ -9,8 +9,6 @@ package com.wastl.Activity;
 
 // com.ithtl.essap
 import com.ithtl.essapp.R;
-import com.wastl.Database.DBAdapter;
-import com.wastl.EventListener.EventListener;
 
 // Android
 import android.app.ListActivity;
@@ -29,15 +27,16 @@ import android.widget.ListView;
  * @author Lukas Bernreiter
  * @version 1.2.1, 19/02/2012
  * 
+ * TODO Rewrite database connection with new adapter
+ * TODO Implement own event listener
  */
 public class BrowseFireDepartmentsActivity extends ListActivity implements Runnable {
 
 	private String selectedItemText;
-	private EventListener eventListener;
 	private ProgressDialog progressDialog;
 	private Context context;
 	private String[] fireDepartments;
-	private DBAdapter dba;
+//	private DBAdapter dba;
 
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);      
@@ -54,9 +53,9 @@ public class BrowseFireDepartmentsActivity extends ListActivity implements Runna
 	private void initializeObjects()
 	{
 		// initialize objects 
-        this.eventListener = new EventListener(this);
+      //  this.eventListener = new EventListener(this);
         this.context = this.getApplicationContext();
-        this.dba = new DBAdapter(this.getApplicationContext());
+//        this.dba = new DBAdapter(this.getApplicationContext());
         
         //get the selectedItemText from the intent
         this.selectedItemText = this.getIntent().getExtras().getString("selectedItemText");
@@ -75,10 +74,11 @@ public class BrowseFireDepartmentsActivity extends ListActivity implements Runna
 	// loads the data
 	public void run()
 	{		
+		/*
 		Integer id = dba.getDistrictIDbyName(this.selectedItemText);			
 		
 		this.fireDepartments = dba.readFireDepartmentsbyID(id);
-		
+		*/
         this.handler.sendEmptyMessage(0);
 	}
 	
@@ -99,7 +99,7 @@ public class BrowseFireDepartmentsActivity extends ListActivity implements Runna
             // listView styles
            this.setListViewStyle(browseFireDepartments);
             
-            browseFireDepartments.setOnItemClickListener(eventListener);
+//            browseFireDepartments.setOnItemClickListener(eventListener);
         }
         
         private void setListViewStyle(ListView _listView)

@@ -43,13 +43,6 @@
 		android:layout_below="@+id/LinearLayout01"
 		android:gravity="center"
 		>
-		
-	<com.wastl.Activity.Splash.GifView 
-    android:id="@+id/gifView1" 
-    android:layout_width="200px" 
-    android:layout_height="128px"
-   	android:layout_gravity="center"
-	android:gravity="center"
-    />		
+	
     </LinearLayout>
 </RelativeLayout>

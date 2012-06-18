@@ -9,7 +9,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import com.wastl.Entity.DistrictEntity;
-import com.wastl.Entity.DistrictMap;
+import com.wastl.Entity.Hierarchy;
 
 
 import android.util.Log;
@@ -68,8 +68,7 @@ public class WastlStatus
 	
 	public void refreshStatus()
 	{
-		// Clear the current list.
-		DistrictMap.getMap().clear();
+		Hierarchy districtHierarchy = new Hierarchy();
 		
 		// Get the current status of Lower Austria
 		this.downloadCurrentStatus();
@@ -77,7 +76,9 @@ public class WastlStatus
 		for(Integer districtId : DistrictEntity.FetchAllIds())
 		{	
 			// Create a new entity
-			DistrictEntity district = DistrictMap.getInstance(districtId);
+//			DistrictEntity district = DistrictMap.getInstance(districtId);
+			
+			DistrictEntity district = districtHierarchy.retrieveDistrict(districtId);
 			
 			if(null != district)
 			{
