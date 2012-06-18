@@ -4,6 +4,7 @@
 	<!-- Application -->
     <string name="app_name">WASTL Mobile</string>
     <string name="logo">Image</string>
+    <string name="about">About</string>
     
     <!-- Main -->
     <string name="imageButton_Search">Search</string>

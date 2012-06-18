@@ -4,7 +4,7 @@
     android:id="@+id/RLayout_Main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"    
-    android:background="#cdc9c9" >
+    android:background="@drawable/background" >
     
     <RelativeLayout 
         android:id="@+id/RLayout_Title"
@@ -23,14 +23,21 @@
             android:src="@drawable/logo_place" />
         
         <TextView style="@android:style/TextAppearance.DialogWindowTitle"
+            android:id="@+id/textView_Title"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:text="@string/app_name"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/image_title"/>
-                       
-    </RelativeLayout>
-        	
+        
+        <ImageButton style="@style/titleBarAbout"
+            android:src="@drawable/about"
+            android:contentDescription="@string/about"            
+            android:background="@android:color/transparent"
+            android:layout_alignParentRight="true" 
+            android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
        
     <GridView  
 	   android:id="@+id/gridview_Main_Navigation"
