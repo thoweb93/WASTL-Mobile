@@ -3,7 +3,6 @@ package com.wastl;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.URL;
@@ -61,8 +60,8 @@ public class WastlStatus
 				outputStream.flush();
 				outputStream.close();
 				inputStream.close();
-			} catch (IOException _e) {
-				Log.e(AppFacade.GetTag(), _e.getMessage());
+			} catch (Exception _e) {
+				Log.e(AppFacade.GetTag(), "Status: " + _e.getMessage());
 			}
 		}
 	}

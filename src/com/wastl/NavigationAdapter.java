@@ -60,7 +60,7 @@ public class NavigationAdapter extends BaseAdapter
 	/**
 	 * Retrieves the id of a drawable for a given position.
 	 * @param _position The position.
-	 * @return 			The id
+	 * @return 			The id.
 	 */
 	public long getItemId(int _position) {
 		return mThumbIds[_position];

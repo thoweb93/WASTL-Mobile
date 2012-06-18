@@ -18,7 +18,7 @@ import android.os.Bundle;
 public class SplashActivity extends Activity implements Runnable {
 
 	private WastlStatus mStatus = null;
-	private Thread mSplash = null;
+	private Thread mSplash 		= null;
 	
 	/** Called when the activity is first created. */
 	@Override

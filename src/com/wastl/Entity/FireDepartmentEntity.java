@@ -1,5 +1,7 @@
 package com.wastl.Entity;
 
+import java.util.ArrayList;
+
 import com.wastl.Database.DatabaseFacade;
 
 import android.content.ContentValues;
@@ -11,7 +13,7 @@ import android.content.ContentValues;
  * @version 1.2.2, 10/03/2012
  * @since 1.2.1
  */
-public class FireDepartmentEntity {
+public class FireDepartmentEntity implements Entity {
 
 	private Integer mFireDepartmentId 			= 0; 
 	private Integer mNumber 		= 0;
@@ -45,10 +47,6 @@ public class FireDepartmentEntity {
 
 	public String getFireDepartmentPhoneNumber()  {	
 		return this.mPhoneNumber;
-	}
-
-	public String getFireDepartmentName() {	
-		return this.mName;
 	}
 	
 	public Integer getFireDepartmentId() {	
@@ -106,12 +104,48 @@ public class FireDepartmentEntity {
 	{
 		ContentValues values = new ContentValues();
 		
-		values.put(DatabaseFacade.GetColumnFdName(), this.getFireDepartmentName());
-		values.put(DatabaseFacade.GetColumnFdLocation(), this.getFireDepartmentLocation());
+		values.put(DatabaseFacade.GetColumnFdName(), 		this.getName());
+		values.put(DatabaseFacade.GetColumnFdLocation(), 	this.getFireDepartmentLocation());
 		values.put(DatabaseFacade.GetColumnFdPhoneNumber(), this.getFireDepartmentPhoneNumber());
-		values.put(DatabaseFacade.GetColumnFdBazId(), this.getFireDepartmentDistrictID());
+		values.put(DatabaseFacade.GetColumnFdBazId(), 		this.getFireDepartmentDistrictID());
 		
 		return values;
+	}
+
+	public ArrayList<String> traverse() {
+		
+		
+		return null;
+	}
+
+	public void add(Entity _entity) 
+	{
+		// no-op
+	}
+
+	public void remove(Entity _entity) 
+	{
+		// no-op
+	}
+
+	public void update() 
+	{
+		// TODO Implement update
+	}
+
+	public int getCount() 
+	{
+		return 1;
+	}
+
+	public String[] getChildren() 
+	{	
+		return new String[] {this.mName};
+	}
+
+	public String getName() 
+	{
+		return this.mName;
 	}
 
 }

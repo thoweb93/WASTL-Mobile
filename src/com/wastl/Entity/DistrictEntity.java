@@ -1,5 +1,9 @@
 package com.wastl.Entity;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import com.wastl.Database.DatabaseFacade;
 
 import android.content.ContentValues;
@@ -11,12 +15,13 @@ import android.content.ContentValues;
  * @version 1.2.3, 19/02/2012
  * @since 1.2.1
  */
-public class DistrictEntity extends DistrictIds {
+public class DistrictEntity extends DistrictIds implements Entity {
 
 	private Integer mDistrictId = 0;
 	private Integer mCountMission = 0;
 	private Integer mCountFireDepartment = 0;
 	private String mName = "";
+	private List<Entity> mChildren = new ArrayList<Entity>();
 
 	/**
 	 * Default constructor
@@ -141,4 +146,39 @@ public class DistrictEntity extends DistrictIds {
 	{
 		return this.mCountFireDepartment > 0 || this.mCountMission > 0;
 	}
+
+	public void add(Entity _entity) 
+	{
+		this.mChildren.add(_entity);
+	}
+
+	public void remove(Entity _entity) 
+	{
+		this.mChildren.remove(_entity);
+	}
+
+	public void update() 
+	{	
+		for(Iterator<Entity> it = this.mChildren.iterator(); it.hasNext();)
+			it.next().update();
+	}
+
+	public int getCount() 
+	{
+		int size = 0;
+		for(Iterator<Entity> it = this.mChildren.iterator(); it.hasNext();)
+			size += it.next().getCount();
+		
+		return size;
+	}
+
+	public ArrayList<String> getChildren() {
+		
+		ArrayList<String> children = new ArrayList<String>();
+		
+		for(Iterator<Entity> it = this.mChildren.iterator(); it.hasNext();)
+			children.add(it.next().getName());
+		
+		return children;
+	}	
 }

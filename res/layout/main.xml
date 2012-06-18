@@ -33,15 +33,12 @@
         	
        
     <GridView  
-    android:id="@+id/gridview_Main_Navigation"
-    android:layout_width="fill_parent" 
-    android:layout_height="fill_parent"
-    android:columnWidth="90dp"
-    android:numColumns="2"
-    android:verticalSpacing="20dp"
-    android:horizontalSpacing="10dp"
-    android:stretchMode="columnWidth"
-    android:layout_below="@id/RLayout_Title" 
-    android:paddingTop="40dp" />
+	   android:id="@+id/gridview_Main_Navigation"
+	   android:layout_below="@id/RLayout_Title"
+	   android:layout_width="match_parent" 
+	   android:layout_height="match_parent"	   
+	   android:numColumns="auto_fit"	   	   
+	   android:stretchMode="columnWidth"	    
+	   android:paddingTop="40dp" />
     	
 </RelativeLayout>

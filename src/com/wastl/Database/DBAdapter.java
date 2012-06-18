@@ -93,7 +93,7 @@ public class DBAdapter  {
 		
 		//fill the content value with one fire department
 		values.put(TABLE_FFID, _fireDepartment.getFireDepartmentId());
-		values.put(TABLE_FFNAME, _fireDepartment.getFireDepartmentName());
+		values.put(TABLE_FFNAME, _fireDepartment.getName());
 		values.put(TABLE_FFLOCATION, _fireDepartment.getFireDepartmentLocation());
 		values.put(TABLE_FF_PHONE_NUMBER, _fireDepartment.getFireDepartmentPhoneNumber());
 		values.put(TABLE_DISTRICT_ID, _fireDepartment.getFireDepartmentDistrictID());
