@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RLayout_Main"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"    
+    android:background="#cdc9c9" >
+    
+    <RelativeLayout 
+        android:id="@+id/RLayout_Title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" 
+        android:layout_alignParentTop="true"
+        android:background="@drawable/title_bar" >
+        
+        <ImageView
+            android:id="@+id/image_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:contentDescription="@string/logo"
+            android:padding="5dp"
+            android:src="@drawable/logo_place" />
+        
+        <TextView style="@android:style/TextAppearance.DialogWindowTitle"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="@string/statistics_title"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/image_title"/>
+                       
+    </RelativeLayout>
+        	
+    <TextView android:id="@+id/textView_LowerAustria"
+        android:textAppearance="@android:style/TextAppearance.DialogWindowTitle"
+       android:layout_below="@id/RLayout_Title"
+	   android:layout_width="wrap_content" 
+	   android:layout_height="wrap_content"
+	   android:paddingLeft="25dp"
+	   android:paddingTop="15dp"
+	   android:text="@string/statistics_LowerAustria" />
+    
+    <LinearLayout android:id="@+id/linear_LowerAustria"
+	   android:layout_below="@id/textView_LowerAustria"
+	   android:layout_width="match_parent" 
+	   android:layout_height="wrap_content"
+	   android:paddingLeft="25dp"	
+	   android:background="@drawable/border_background">
+        
+    </LinearLayout>
+
+    <TextView android:id="@+id/textView_Wastl"
+        android:textAppearance="@android:style/TextAppearance.DialogWindowTitle"
+       android:layout_below="@id/linear_LowerAustria"
+	   android:layout_width="wrap_content" 
+	   android:layout_height="wrap_content"
+	   android:paddingLeft="25dp"
+	   android:paddingTop="20dp"
+	   android:text="@string/statistics_Wastl" />
+    
+    <LinearLayout android:id="@+id/linear_Wastl"
+	   android:layout_below="@id/textView_Wastl"
+	   android:layout_width="match_parent" 
+	   android:layout_height="wrap_content"	
+	   android:paddingLeft="25dp"
+	   android:background="@drawable/border_background" >
+        
+    </LinearLayout>
+    
+</RelativeLayout>

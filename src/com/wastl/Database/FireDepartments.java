@@ -14,8 +14,8 @@ import android.database.Cursor;
  * @since 1.2.2
  */
 public class FireDepartments extends MainAdapter 
-{
-
+{	
+	
 	/**
 	 * Constructor, calls base constructor.
 	 * @param _context the application context.
@@ -99,5 +99,15 @@ public class FireDepartments extends MainAdapter
 	public long addFireDepartment(FireDepartmentEntity _fireDepartmentEntity)
 	{
 		return mDatabase.insert(DatabaseFacade.GetTableFireDepartments(), null, _fireDepartmentEntity.getContentValues());	
+	}
+	
+	/** 
+	 * @return The number of rows in the fire departmens table
+	 */
+	public int countFireDepartments()
+	{
+		Cursor cursor = mDatabase.rawQuery(DatabaseFacade.GetAllFireDepartments(), null);
+		
+		return cursor.getCount();
 	}
 }

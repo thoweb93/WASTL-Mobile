@@ -11,6 +11,7 @@ import com.wastl.Activity.BrowseDistrictsActivity;
 import com.wastl.Activity.MainActivity;
 import com.wastl.Activity.MapActivity;
 import com.wastl.Activity.MissionActivity;
+import com.wastl.Activity.StatisticActivity;
 
 /**
  * Contains and handles every event of the main activity.
@@ -49,6 +50,7 @@ public class EventListener_MainActivity implements OnItemClickListener
 		
 		// Stats
 		case 0:
+			intent = new Intent(_view.getContext(), StatisticActivity.class);
 			break;
 			
 		// Missions

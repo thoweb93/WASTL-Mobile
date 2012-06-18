@@ -184,9 +184,15 @@ public class DistrictEntity extends DistrictIds implements Entity {
 	
 	public Entity getEntity(int _key)
 	{
+		DistrictEntity tmp = null;
+		
 		for(Iterator<Entity> it = this.mChildren.iterator(); it.hasNext();)
-			if(_key == ((DistrictEntity)it.next()).getId())
-				return it.next();
+		{
+			tmp = (DistrictEntity)it.next();
+			if(_key == tmp.getId())
+					return tmp;
+		}
+
 		return null;
 	}
 }

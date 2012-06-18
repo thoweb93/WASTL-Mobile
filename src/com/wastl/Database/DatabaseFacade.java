@@ -27,6 +27,8 @@ public abstract class DatabaseFacade
 	private static final String COLUMN_DISTRICT_NAME 	= "name";
 	
 	// SQL Statements
+	
+	/* DDL Statements */
 	private static final String CREATE_TABLE_DISTRICTS = 	"CREATE TABLE IF NOT EXISTS " + DISTRICTS_TABLE_NAME + " ("
 													+ COLUMN_DISTRICT_ID   + " INTEGER PRIMARY KEY, " 
 													+ COLUMN_DISTRICT_NAME + " TEXT NOT NULL);";
@@ -40,10 +42,17 @@ public abstract class DatabaseFacade
 		 												+ COLUMN_FD_BAZID 	 	 + ") REFERENCES "
 		 												+ DISTRICTS_TABLE_NAME 	 + "(" + COLUMN_DISTRICT_ID +"));";
 	
+	
+	
 	private static final String DROP_DISTRICT = "DROP TABLE IF EXISTS " + DISTRICTS_TABLE_NAME;
 	
 	private static final String DROP_FIREDEPARTMENTS = "DROP TABLE IF EXISTS " + FIREDEPARTMENTS_TABLE_NAME;
 
+	/* DQL Statements */	
+	private static final String SELECT_ALL_FIREDEPARTMENTS = "SELECT * FROM " + FIREDEPARTMENTS_TABLE_NAME;
+	
+	private static final String SELECT_ALL_DISTRICTS = "SELECT * FROM " + DISTRICTS_TABLE_NAME;
+	
 	// Getter
 	/**
 	 * Retrieves the current database version.
@@ -127,5 +136,15 @@ public abstract class DatabaseFacade
 
 	public static String GetColumnDistrictName() {
 		return COLUMN_DISTRICT_NAME;
+	}
+	
+	public static String GetAllFireDepartments()
+	{
+		return SELECT_ALL_FIREDEPARTMENTS;
+	}
+	
+	public static String GetAllDistricts()
+	{
+		return SELECT_ALL_DISTRICTS;
 	}
 }

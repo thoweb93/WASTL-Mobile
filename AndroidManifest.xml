@@ -68,6 +68,10 @@
 				  android:label="Feuerwehren im Bezirk" 
 				  android:theme="@android:style/Theme.NoTitleBar" />
 		
+		<activity android:name="com.wastl.Activity.StatisticActivity"
+				  android:label="Statistiken" 
+				  android:theme="@android:style/Theme.NoTitleBar" />
+		
 		<activity 
 		    android:name="com.wastl.Activity.FireDepartmentInfoActivity" 
 		    android:screenOrientation="portrait"

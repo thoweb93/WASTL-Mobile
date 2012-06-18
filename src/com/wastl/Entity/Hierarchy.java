@@ -25,12 +25,18 @@ public class Hierarchy
 	
 	public DistrictEntity retrieveDistrict(int _id)
 	{
-		XMLParser parser = new XMLParser(AppFacade.GetFullPath());
-		DistrictEntity district = parser.getDataOfDistrict(_id);
 		
-		if(district.checkState())
-			sRootItem.add(district);
+		DistrictEntity district = (DistrictEntity) sRootItem.getEntity(_id);
 		
+		if(district == null)
+		{
+			XMLParser parser = new XMLParser(AppFacade.GetFullPath());
+			district = parser.getDataOfDistrict(_id);
+			
+			if(district.checkState())
+				sRootItem.add(district);
+		}
+
 		return district;
 	}
 	
@@ -48,4 +54,10 @@ public class Hierarchy
 	{
 		return sRootItem.getChildrenName();
 	}
+	
+	public void update()
+	{
+		sRootItem = new DistrictEntity();
+		sRootItem.update();
+	}		
 }

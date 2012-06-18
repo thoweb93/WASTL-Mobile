@@ -8,6 +8,10 @@
     <!-- Main -->
     <string name="imageButton_Search">Search</string>
     
+    <!-- Statistics -->
+    <string name="statistics_title">Statistiken</string>
+    <string name="statistics_LowerAustria">Statistiken über NÖ</string>
+    <string name="statistics_Wastl">Statistiken über WASTL</string>
     
     <!-- Database -->
     <string name="create_Database">Datenbank wird erstellt</string>

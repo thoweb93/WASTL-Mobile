@@ -80,23 +80,23 @@ public class NavigationAdapter extends BaseAdapter
 	 */
 	public View getView(int _position, View _convertView, ViewGroup _parent) {
 
-		View view;
+		View view = null;
+		
 		if(null == _convertView)
 		{						
 			LayoutInflater inflater = mMain.getLayoutInflater();
 			view = inflater.inflate(R.layout.gridview_icon, null);				
-			
-			// Set text
-			((TextView)view.findViewById(R.id.textView_GridView)).setText(mCaptions[_position]);
-			
-			// Set image
-			Drawable currentImage = mContext.getResources().getDrawable(mThumbIds[_position]);
-			currentImage.setBounds(0, 0, 100, 100);
-			((TextView)view.findViewById(R.id.textView_GridView)).setCompoundDrawables(null, currentImage, null, null);
-			
         } else 
             view = _convertView;
 
+		// Set text
+		((TextView)view.findViewById(R.id.textView_GridView)).setText(mCaptions[_position]);
+		
+		// Set image
+		Drawable currentImage = mContext.getResources().getDrawable(mThumbIds[_position]);
+		currentImage.setBounds(0, 0, 100, 100);
+		((TextView)view.findViewById(R.id.textView_GridView)).setCompoundDrawables(null, currentImage, null, null);
+		
         return view;
 	}
 	

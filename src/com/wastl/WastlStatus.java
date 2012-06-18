@@ -75,9 +75,7 @@ public class WastlStatus
 		
 		for(Integer districtId : DistrictEntity.FetchAllIds())
 		{	
-			// Create a new entity
-//			DistrictEntity district = DistrictMap.getInstance(districtId);
-			
+			// Create a new entity					
 			DistrictEntity district = districtHierarchy.retrieveDistrict(districtId);
 			
 			if(null != district)

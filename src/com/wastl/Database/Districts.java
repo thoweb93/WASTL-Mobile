@@ -90,4 +90,11 @@ public class Districts extends MainAdapter {
 	{
 		return mDatabase.delete(DatabaseFacade.GetTableDistricts(), DatabaseFacade.GetColumnDistrictId() + "=" +_id, null) > 0;
 	}
+	
+	public int countDistricts()
+	{
+		Cursor cursor = mDatabase.rawQuery(DatabaseFacade.GetAllDistricts(), null);
+		
+		return cursor.getCount();
+	}
 }

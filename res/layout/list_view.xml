@@ -22,7 +22,7 @@
             android:padding="5dp"
             android:src="@drawable/logo_place" />
         
-        <TextView style="@android:style/TextAppearance.WindowTitle"
+        <TextView style="@android:style/TextAppearance.DialogWindowTitle"
             android:id="@+id/textView_Title"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
