@@ -1,12 +1,13 @@
-package com.wastl.Activity.Splash;
+package com.wastl.Activity;
 
 import com.ithtl.essapp.R;
 import com.wastl.WastlStatus;
-import com.wastl.Activity.MainActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.widget.RelativeLayout;
 
 /**
  * Defines the splash screen. Downloads the global XML file and fills the district map.
@@ -25,6 +26,11 @@ public class SplashActivity extends Activity implements Runnable {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.splash);
+		
+		/* Set and start the transition for the splash screen */
+		RelativeLayout rLayout = (RelativeLayout) this.findViewById(R.id.rLayout_Splash);
+		rLayout.setBackgroundResource(R.drawable.splash_transition);
+		((TransitionDrawable)rLayout.getBackground()).startTransition(5000);
 		
 		this.initializeObjects();
 	}

@@ -48,5 +48,14 @@
 	   android:stretchMode="columnWidth"
 	   android:verticalSpacing="10dp"    
 	   android:paddingTop="40dp" />
+    
+    <TextView 
+	    android:layout_height="wrap_content"
+	    android:layout_width="wrap_content"
+	    android:text="@string/app_version"
+	    android:textSize="12dp"
+	    android:paddingRight="5dp"	    
+	    android:layout_alignParentRight="true"
+	    android:layout_alignParentBottom="true"/>
     	
 </RelativeLayout>

@@ -23,8 +23,8 @@ import android.util.Log;
  */
 public class WastlStatus 
 {	
-	private static Integer mCountMissions = 0;
-	private static Integer mCountFireDepartments = 0;
+	private static Integer sCountMissions = 0;
+	private static Integer sCountFireDepartments = 0;
 	
 	/**
 	 * Default constructor.
@@ -69,6 +69,8 @@ public class WastlStatus
 	public void refreshStatus()
 	{
 		Hierarchy districtHierarchy = new Hierarchy();
+		sCountFireDepartments = 0;
+		sCountMissions = 0;
 		
 		// Get the current status of Lower Austria
 		this.downloadCurrentStatus();
@@ -80,22 +82,19 @@ public class WastlStatus
 			
 			if(null != district)
 			{
-				mCountMissions 		  += district.getCountMission();
-				mCountFireDepartments += district.getCountFireDepartment();
+				sCountMissions 		  += district.getCountMission();
+				sCountFireDepartments += district.getCountFireDepartment();
 			}
 		}
-	}
+	}	
 	
-	public void getFireDepartmentStatus(String _bazId)
+	public static Integer GetCountMissions() 
 	{
-		
+		return sCountMissions;
 	}
 	
-	public static Integer GetCountMissions() {
-		return mCountMissions;
-	}
-	
-	public static Integer GetCountFireDepartments(){
-		return mCountFireDepartments;
+	public static Integer GetCountFireDepartments()
+	{
+		return sCountFireDepartments;
 	}
 }

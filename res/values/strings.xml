@@ -3,8 +3,10 @@
     
 	<!-- Application -->
     <string name="app_name">WASTL Mobile</string>
+    <string name="app_version">1.3</string>
     <string name="logo">Image</string>
     <string name="about">About</string>
+    <string name="lowerAustria">Niederösterreich</string>
     
     <!-- Main -->
     <string name="imageButton_Search">Search</string>
@@ -19,6 +21,6 @@
     <string name="search_Database">Datenbank durchsuchen</string>
     
     <!-- Mission -->
-    <string name="mission_Title">Aktuelle Einsätze</string>
+    <string name="mission_Title">Aktuelle Einsätze</string>    
     
 </resources>
