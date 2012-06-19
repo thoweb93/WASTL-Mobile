@@ -4,7 +4,7 @@
     android:id="@+id/RLayout_Main"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"    
-    android:background="#cdc9c9" >
+    android:background="@drawable/background" >
     
     <RelativeLayout 
         android:id="@+id/RLayout_Title"
@@ -37,9 +37,9 @@
         android:id="@+id/listView_Content" 
         android:layout_height="fill_parent"
         android:layout_width="fill_parent"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/transparent"
         android:padding="10dp"
-        android:divider="@android:color/darker_gray"
+        android:divider="@android:color/transparent"
         android:dividerHeight="15dp"
         android:cacheColorHint="@android:color/darker_gray"
         android:layout_below="@id/RLayout_Title" />

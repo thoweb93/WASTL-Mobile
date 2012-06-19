@@ -18,7 +18,7 @@ import android.util.Log;
  * Downloads and stores the current status in Lower Austria.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.3, 26/03/2012
+ * @version 1.3, 19/06/2012
  * @since 1.2.2
  */
 public class WastlStatus 
@@ -35,17 +35,17 @@ public class WastlStatus
 		new File(AppFacade.GetPath()).mkdirs();
 	}
 	
-	private void downloadCurrentStatus()
+	private void downloadStatus(String _url, String _path)
 	{
 		InputStream inputStream = null;
 		OutputStream outputStream = null;
 		int current = 0;
 		
 		try {
-			URL url = new URL(AppFacade.GetMainURL());
+			URL url = new URL(_url);
 			URLConnection connection = (URLConnection) url.openConnection();
 			inputStream = new BufferedInputStream(connection.getInputStream(), 1024 * 5);
-			outputStream = new FileOutputStream(AppFacade.GetFullPath());
+			outputStream = new FileOutputStream(_path);
 			
 			byte buff[] = new byte[1024 * 5];
 			
@@ -73,7 +73,7 @@ public class WastlStatus
 		sCountMissions = 0;
 		
 		// Get the current status of Lower Austria
-		this.downloadCurrentStatus();
+		this.downloadStatus(AppFacade.GetMainURL(), AppFacade.GetFullPath());
 		
 		for(Integer districtId : DistrictEntity.FetchAllIds())
 		{	
@@ -87,6 +87,11 @@ public class WastlStatus
 			}
 		}
 	}	
+	
+	public void getDetails(DistrictEntity _district)
+	{
+		this.downloadStatus(_district.getDistrictURL(), AppFacade.GetTmpFullPath());
+	}
 	
 	public static Integer GetCountMissions() 
 	{

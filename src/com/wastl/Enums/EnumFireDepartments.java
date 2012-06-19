@@ -14,7 +14,7 @@ package com.wastl.Enums;
  */
 public class EnumFireDepartments {
 
-	//used to retrieve the fireDepartments in an district
+	//used to retrieve the fireDepartments in a district
 	//URL: http://www.feuerwehr-krems.at/CodePages/Wastl/GetDaten/GetWastlBezirk.asp?<DISTRICT>
 	private final String URL_BAZ_KREMS_DONAU		= "?Bezirk=10";
 	private final String URL_BAZ_ST_PÖLTEN 			= "?Bezirk=17";

@@ -57,8 +57,9 @@
 		<activity android:name="com.wastl.Activity.MissionActivity"
 				  android:theme="@android:style/Theme.NoTitleBar" />
 		
-		<activity android:name="com.wastl.Activity.FireDepartmentsActivity"
-				  android:label="Feuerwehren im Bezirk" />
+		<activity android:name="com.wastl.Activity.MissionDetailsActivity"
+				  android:label="Feuerwehren im Bezirk" 
+				  android:theme="@android:style/Theme.NoTitleBar" />
 		
 		<activity android:name="com.wastl.Activity.BrowseDistrictsActivity"
 				  android:label="Bezirksalarmzentralen in NÖ"

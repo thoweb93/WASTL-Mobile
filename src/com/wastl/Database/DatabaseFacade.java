@@ -37,10 +37,10 @@ public abstract class DatabaseFacade
 														+ COLUMN_FD_ID		 	 +" INTEGER PRIMARY KEY AUTOINCREMENT, "
 		 												+ COLUMN_FD_NAME 		 +" TEXT NOT NULL, " 
 		 												+ COLUMN_FD_LOCATION 	 +" TEXT NOT NULL, " 
-		 												+ COLUMN_FD_PHONE_NUMBER +" TEXT NO NULL, " 
+		 												+ COLUMN_FD_PHONE_NUMBER +" TEXT NOT NULL, " 
 		 												+ COLUMN_FD_BAZID 	 	 +" INTEGER NOT NULL, FOREIGN KEY (" 
 		 												+ COLUMN_FD_BAZID 	 	 + ") REFERENCES "
-		 												+ DISTRICTS_TABLE_NAME 	 + "(" + COLUMN_DISTRICT_ID +"));";
+		 												+ DISTRICTS_TABLE_NAME 	 + " (" + COLUMN_DISTRICT_ID +"));";
 	
 	
 	

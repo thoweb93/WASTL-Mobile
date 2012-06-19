@@ -10,7 +10,7 @@ import com.wastl.XMLParser;
  * Each district might a have multiple fire departments.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.4, 18/06/2012
+ * @version 1.3, 18/06/2012
  * @since 1.2.4
  */
 public class Hierarchy 
@@ -50,14 +50,20 @@ public class Hierarchy
 		return (DistrictEntity) sRootItem.getEntity(_key);
 	}
 	
+	public DistrictEntity getDistrict(String _name)
+	{
+		return (DistrictEntity) sRootItem.getEntity(_name);
+	}
+	
 	public ArrayList<String> getActiveDistricts()
 	{
 		return sRootItem.getChildrenName();
 	}
 	
 	public void update()
-	{
-		sRootItem = new DistrictEntity();
+	{	
+		// TODO Implement update function
 		sRootItem.update();
+//		sRootItem = new DistrictEntity();
 	}		
 }

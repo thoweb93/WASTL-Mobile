@@ -13,6 +13,7 @@ import org.w3c.dom.NodeList;
 
 import com.ithtl.essapp.R;
 import com.wastl.Entity.DistrictEntity;
+import com.wastl.Entity.FireDepartmentEntity;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -82,7 +83,28 @@ public class XMLParser
 		return district;
 	}
 	
-	public NodeList getListOfFireDepartments(String _xmlFile)
+	public void getDetailsOfDistrict(String _xmlFile, DistrictEntity _districtEntity)
+	{
+		NodeList listofFireDepartments = this.getListOfFireDepartments(_xmlFile);
+		
+		for(int i = 0; i < listofFireDepartments.getLength(); i++)
+		{
+			FireDepartmentEntity entity = new FireDepartmentEntity();
+			Element element = (Element) listofFireDepartments.item(i);
+			
+			try{
+				entity.setFireDepartmentDistrictID(_districtEntity.getId());
+				entity.setFireDepartmentId(Integer.parseInt(this.getNodeByString(element, "ID")));
+				entity.setFireDepartmentStatus(this.getNodeByString(element, "Title"));
+				
+				_districtEntity.add(entity);				
+			}catch (Exception _e) {
+				Log.e(AppFacade.GetTag(), _e.getMessage());
+			}			
+		}
+	}
+	
+	private NodeList getListOfFireDepartments(String _xmlFile)
 	{
 		NodeList fireDepartments = null;
 		

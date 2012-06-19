@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import com.wastl.AppFacade;
 import com.wastl.Database.DatabaseFacade;
 
 import android.content.ContentValues;
@@ -12,7 +13,7 @@ import android.content.ContentValues;
  * Defines the structure of a district entity.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.3, 19/02/2012
+ * @version 1.3, 19/06/2012
  * @since 1.2.1
  */
 public class DistrictEntity extends DistrictIds implements Entity {
@@ -138,6 +139,11 @@ public class DistrictEntity extends DistrictIds implements Entity {
 		return fetchAllIds();
 	}
 	
+	public String getDistrictURL()
+	{
+		return AppFacade.GetDistrictURL() + getURL(this.mDistrictId);
+	}
+	
 	/**
 	 * Checks the state of this district.
 	 * @return True if a fire department is currently employing, false otherwise.
@@ -172,8 +178,8 @@ public class DistrictEntity extends DistrictIds implements Entity {
 		return size;
 	}
 
-	public ArrayList<String> getChildrenName() {
-		
+	public ArrayList<String> getChildrenName() 
+	{
 		ArrayList<String> children = new ArrayList<String>();
 		
 		for(Iterator<Entity> it = this.mChildren.iterator(); it.hasNext();)
@@ -181,6 +187,35 @@ public class DistrictEntity extends DistrictIds implements Entity {
 		
 		return children;
 	}	
+	
+	public ArrayList<String> getActiveFireDepartments()
+	{
+		ArrayList<String> statusList = new ArrayList<String>();
+		FireDepartmentEntity tmp = null;
+		
+		for(Iterator<Entity> it = this.mChildren.iterator(); it.hasNext();)
+		{
+			tmp = (FireDepartmentEntity) it.next();
+			if(null != tmp && !tmp.getFireDepartmentStatus().contains("einsatzbereit"))
+				statusList.add(tmp.getFireDepartmentStatus());
+		}
+		
+		return statusList;
+	}
+	
+	public Entity getEntity(String _name)
+	{
+		DistrictEntity tmp = null;
+		
+		for(Iterator<Entity> it = this.mChildren.iterator(); it.hasNext();)
+		{
+			tmp = (DistrictEntity)it.next();
+			if(_name.equalsIgnoreCase(tmp.getName()))
+					return tmp;
+		}
+
+		return null;
+	}
 	
 	public Entity getEntity(int _key)
 	{
@@ -195,4 +230,5 @@ public class DistrictEntity extends DistrictIds implements Entity {
 
 		return null;
 	}
+		
 }
