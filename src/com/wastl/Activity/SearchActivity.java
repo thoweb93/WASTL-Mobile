@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 /**
  * Receives the query from the search dialog.
@@ -36,7 +37,10 @@ public class SearchActivity extends Activity implements Runnable
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);        
-        setContentView(R.layout.list_view);
+        
+        /* Set content and title */
+        this.setContentView(R.layout.list_view);
+        ((TextView)this.findViewById(R.id.textView_Title)).setText("Suchergebnisse");
         
         if(Intent.ACTION_SEARCH.equals(this.getIntent().getAction()))
         {

@@ -10,7 +10,7 @@ import android.database.Cursor;
  * Exposes methods for accessing the fire department's table.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.4, 18/06/2012
+ * @version 1.3, 19/06/2012
  * @since 1.2.2
  */
 public class FireDepartments extends MainAdapter 
@@ -32,7 +32,7 @@ public class FireDepartments extends MainAdapter
 	{
 		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableFireDepartments(),
 				new String[]{DatabaseFacade.GetColumnFdId(), DatabaseFacade.GetColumnFdBazId(), DatabaseFacade.GetColumnFdName(), DatabaseFacade.GetColumnFdLocation(), DatabaseFacade.GetColumnFdPhoneNumber()},
-				null, null, null, null, null);
+				null, null, null, null, DatabaseFacade.GetColumnFdName());
 		
 		if(null != cursor)
 			cursor.moveToFirst();
@@ -49,7 +49,7 @@ public class FireDepartments extends MainAdapter
 	{
 		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableFireDepartments(),
 				new String[]{DatabaseFacade.GetColumnFdId(), DatabaseFacade.GetColumnFdBazId(), DatabaseFacade.GetColumnFdName(), DatabaseFacade.GetColumnFdLocation(), DatabaseFacade.GetColumnFdPhoneNumber()},
-				DatabaseFacade.GetColumnFdId() + "=" + _id, null, null, null, null);
+				DatabaseFacade.GetColumnFdId() + "=" + _id, null, null, null, DatabaseFacade.GetColumnFdName());
 		
 		if(null != cursor)
 			cursor.moveToFirst();
@@ -66,7 +66,7 @@ public class FireDepartments extends MainAdapter
 	{
 		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableFireDepartments(),
 				new String[]{DatabaseFacade.GetColumnFdId(), DatabaseFacade.GetColumnFdBazId(), DatabaseFacade.GetColumnFdName(), DatabaseFacade.GetColumnFdLocation(), DatabaseFacade.GetColumnFdPhoneNumber()},
-				DatabaseFacade.GetColumnFdBazId()+ "=" + _bazId, null, null, null, null);
+				DatabaseFacade.GetColumnFdBazId()+ "=" + _bazId, null, null, null, DatabaseFacade.GetColumnFdName());
 		
 		if(null != cursor)
 			cursor.moveToFirst();
@@ -83,7 +83,7 @@ public class FireDepartments extends MainAdapter
 	{
 		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableFireDepartments(),
 				new String[]{DatabaseFacade.GetColumnFdId(), DatabaseFacade.GetColumnFdBazId(), DatabaseFacade.GetColumnFdName(), DatabaseFacade.GetColumnFdLocation(), DatabaseFacade.GetColumnFdPhoneNumber()},
-				DatabaseFacade.GetColumnFdName() + " LIKE '%" + _searchstring +"%'", null, null, null, null);
+				DatabaseFacade.GetColumnFdName() + " LIKE '%" + _searchstring +"%'", null, null, null, DatabaseFacade.GetColumnFdName());
 		
 		if(null != cursor)
 			cursor.moveToFirst();

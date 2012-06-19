@@ -1,8 +1,7 @@
 package com.wastl.Database;
 
-// com.wastl
 import com.wastl.Entity.DistrictEntity;
-// android
+
 import android.content.Context;
 import android.database.Cursor;
 
@@ -10,7 +9,7 @@ import android.database.Cursor;
  * Exposes methods for accessing the district's table.
  * 
  * @author Lukas Bernreiter
- * @version 1.2.2, 04/03/2012
+ * @version 1.3, 19/06/2012
  * @since 1.2.2
  */
 public class Districts extends MainAdapter {
@@ -30,7 +29,7 @@ public class Districts extends MainAdapter {
 	public Cursor fetchAllDistricts()
 	{
 		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableDistricts(), new String[]{DatabaseFacade.GetColumnDistrictId(), DatabaseFacade.GetColumnDistrictName()},
-				null, null, null, null, null);
+				null, null, null, null, DatabaseFacade.GetColumnDistrictName());
 		
 		if(null != cursor)
 			cursor.moveToFirst();
@@ -91,6 +90,10 @@ public class Districts extends MainAdapter {
 		return mDatabase.delete(DatabaseFacade.GetTableDistricts(), DatabaseFacade.GetColumnDistrictId() + "=" +_id, null) > 0;
 	}
 	
+	/**
+	 * Counts every row in the districts table. 
+	 * @return The number of rows in the districts table.
+	 */
 	public int countDistricts()
 	{
 		Cursor cursor = mDatabase.rawQuery(DatabaseFacade.GetAllDistricts(), null);

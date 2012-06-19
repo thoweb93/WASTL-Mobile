@@ -1,14 +1,5 @@
-/*
- * Filename: BrowseDistrictsActivity.java
- * Author: Lukas Bernreiter, Patrik Kimmeswenger
- * Last change: 06.12.2011
- * Description: 
- */
-
 package com.wastl.Activity;
 
-// com.ithtl
-// com.wastl
 import com.ithtl.essapp.R;
 import com.wastl.Database.DatabaseFacade;
 import com.wastl.Database.Districts;
@@ -24,11 +15,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
 
 /**
  * 
  * @author Lukas Bernreiter
- * @version 1.2.2, 10/03/2012
+ * @version 1.3, 10/03/2012
  * @since 1.2.1
  */
 public class BrowseDistrictsActivity extends Activity implements Runnable 
@@ -42,7 +34,9 @@ public class BrowseDistrictsActivity extends Activity implements Runnable
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         this.setContentView(R.layout.list_view);
+        ((TextView)this.findViewById(R.id.textView_Title)).setText("Bezirke");
         
         // initialize all objects
         this.initializeObjects();
