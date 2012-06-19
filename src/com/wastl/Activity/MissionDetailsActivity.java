@@ -77,6 +77,9 @@ public class MissionDetailsActivity extends Activity implements Runnable {
 
 		this.mContent = this.mEntity.getActiveFireDepartments();
         
+		if(this.mContent.size() == 0)
+			this.mContent.add("Keine Details vorhanden!");
+		
         handler.sendEmptyMessage(0);
 	}
 	private Handler handler = new Handler() {
