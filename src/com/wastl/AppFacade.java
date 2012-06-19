@@ -19,6 +19,7 @@ public class AppFacade
 	private static final String URL_MAIN = "http://www.feuerwehr-krems.at/CodePages/Wastl/GetDaten/getwastlmain.asp";
 	private static final String URL_DISTRICT = "http://www.feuerwehr-krems.at/CodePages/Wastl/GetDaten/GetWastlBezirk.asp";
 	private static final String EX_DETAILS = "district_details";
+	private static final String EX_ID = "district_id";
 	
 	/** Retrieves the tag of the application. Used for logging */ 
 	public static String GetTag(){ return TAG;}
@@ -45,4 +46,6 @@ public class AppFacade
 	public static String GetTmpFullPath() { return SD+PATH+TMP_FILENAME; }
 	
 	public static String GetExDetails(){ return EX_DETAILS; }
+	
+	public static String GetExId(){ return EX_ID; }			
 }
