@@ -45,7 +45,7 @@ public class FireDepartments extends MainAdapter
 	 * @param _id 	the id of the fire department.
 	 * @return		a cursor containing the matched fire department.
 	 */
-	public Cursor fetchFireDepartment(Integer _id)
+	public Cursor fetchFireDepartment(long _id)
 	{
 		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableFireDepartments(),
 				new String[]{DatabaseFacade.GetColumnFdId(), DatabaseFacade.GetColumnFdBazId(), DatabaseFacade.GetColumnFdName(), DatabaseFacade.GetColumnFdLocation(), DatabaseFacade.GetColumnFdPhoneNumber()},
@@ -62,7 +62,7 @@ public class FireDepartments extends MainAdapter
 	 * @param _bazId	the id of the district.
 	 * @return			a cursor containing the matched fire department.
 	 */
-	public Cursor fetchRelatedFireDepartment(long _bazId)
+	public Cursor fetchRelatedFireDepartments(long _bazId)
 	{
 		Cursor cursor = mDatabase.query(DatabaseFacade.GetTableFireDepartments(),
 				new String[]{DatabaseFacade.GetColumnFdId(), DatabaseFacade.GetColumnFdBazId(), DatabaseFacade.GetColumnFdName(), DatabaseFacade.GetColumnFdLocation(), DatabaseFacade.GetColumnFdPhoneNumber()},

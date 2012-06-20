@@ -15,14 +15,14 @@ import android.content.ContentValues;
  */
 public class FireDepartmentEntity implements Entity {
 
-	private Integer mFireDepartmentId 			= 0; 
+	private long mFireDepartmentId 			= 0; 
 	private Integer mNumber 		= 0;
 	private Integer mId				= 0;
 	private String  mStatus		= "";
 	private String 	mPhoneNumber	= ""; 
 	private String  mName			= ""; 
 	private String  mLocation		= ""; 
-	private Integer	mDistrictId	= 0;  
+	private long	mDistrictId	= 0;  
 	
 	/**
 	 * Default Constructor
@@ -36,7 +36,7 @@ public class FireDepartmentEntity implements Entity {
 		this.mFireDepartmentId = _fireDepartmentId;
 	}
 
-	public Integer getFireDepartmentDistrictID()  {	
+	public long getFireDepartmentDistrictID()  {	
 		return this.mDistrictId;
 	}
 	
@@ -49,7 +49,7 @@ public class FireDepartmentEntity implements Entity {
 		return this.mPhoneNumber;
 	}
 	
-	public Integer getFireDepartmentId() {	
+	public long getFireDepartmentId() {	
 		return this.mFireDepartmentId;
 	}
 
@@ -65,7 +65,7 @@ public class FireDepartmentEntity implements Entity {
 		return this.mStatus;
 	}
 
-	public void setFireDepartmentDistrictID(Integer _fireDepartmentDistrictID){
+	public void setFireDepartmentDistrictID(long _fireDepartmentDistrictID){
 		this.mDistrictId = _fireDepartmentDistrictID;
 	}
 	

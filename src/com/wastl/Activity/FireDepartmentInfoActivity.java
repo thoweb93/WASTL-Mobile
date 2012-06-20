@@ -1,29 +1,17 @@
-/*
- * Filename: FireDepartmentInfoActivity.java
- * Author: Lukas Bernreiter
- * Last change: 06.12.2011
- * Description: 
- */
-
 package com.wastl.Activity;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 
-import com.google.android.maps.GeoPoint;
-import com.google.android.maps.ItemizedOverlay;
-import com.google.android.maps.MapController;
-import com.google.android.maps.MapView;
-import com.google.android.maps.Overlay;
-import com.google.android.maps.OverlayItem;
 import com.ithtl.essapp.R;
+import com.wastl.AppFacade;
+import com.wastl.Database.DatabaseFacade;
+import com.wastl.Database.FireDepartments;
 import com.wastl.Entity.FireDepartmentEntity;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.graphics.drawable.Drawable;
+import android.database.Cursor;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -38,27 +26,19 @@ import android.widget.TextView;
 /**
  * 
  * @author Lukas Bernreiter
- * @version 1.2.1, 19/02/2012
- * 
- * TODO Rewrite database connection with new database adapter
+ * @version 1.3, 19/06/2012
+ * @since 1.2.1
  */
-public class FireDepartmentInfoActivity extends com.google.android.maps.MapActivity implements Runnable {
+public class FireDepartmentInfoActivity extends Activity implements Runnable 
+{
+	private ProgressDialog mProgressDialog = null;
+	private FireDepartmentEntity mEntity = null;
+	private double mLatitude = 0.0;
+	private double mLongitude = 0.0;
+	
+	private long mDistrictId = 0;
+	private long mFId = 0;
 
-	
-	// Objects
-	// from GUI	
-	private String selectedItemText;
-	private MapView mapView;
-	private MapController mapController;
-	private ProgressDialog progressDialog;
-	private Context context;
-	private String phoneNumber;
-	private String address;
-	private double latitude;
-	private double longitude;
-	
-	// intern
-//	private DBAdapter dbAdapter;
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,28 +46,18 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
         
         this.initializeObjects();                
         
-        // Set Banner        
-        this.setFireDepartment(this.selectedItemText);
-        
-        this.mapView.setBuiltInZoomControls(true);
-		
 		this.loadData();
-		
-		
 	}
 	
 	private void initializeObjects()
 	{
-        this.selectedItemText 	= this.getIntent().getExtras().getString("selectedItemText");        
-        this.context 			= this.getApplicationContext();        
-        this.mapView 			= (MapView) this.findViewById(R.id.mapview);		
-//        this.dbAdapter 			= new DBAdapter(this.context);                       
-		this.mapController 		= mapView.getController();
+		this.mDistrictId = this.getIntent().getExtras().getLong(AppFacade.GetExId());
+		this.mFId = this.getIntent().getExtras().getLong(AppFacade.GetExFId());
 	}
 	// show the progress dialog and start a tread to read the clicked fire department.
 	private void loadData()
 	{
-		this.progressDialog = ProgressDialog.show(this, "", "Daten werden gelesen", true);
+		this.mProgressDialog = ProgressDialog.show(this, "", "Daten werden gelesen", true);
 		
 		Thread thread = new Thread(this);
 		thread.start();
@@ -95,50 +65,48 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
 	
 	public void run()
 	{
-		/*FireDepartmentEntity fireDepartment = this.dbAdapter.readFireDepartmentByString(this.selectedItemText);
+		FireDepartments fireDepartments = new FireDepartments(this);
+		Cursor c = fireDepartments.fetchFireDepartment(this.mFId);
+		this.mEntity = this.getDataFromCursor(c);
 		
-		try{		
-			// telephone number of the selected fire department
-			this.phoneNumber = fireDepartment.getFireDepartmentPhoneNumber();
-					
-			// location of the fire department
-			this.address = fireDepartment.getFireDepartmentLocation();
-			
+		try{
+			this.mLatitude = this.getLatitude(this.mEntity.getFireDepartmentLocation());
+			this.mLongitude = this.getLongitude(this.mEntity.getFireDepartmentLocation());
+		}catch(Exception e)
+		{
+			Log.d(AppFacade.GetTag(), e.getMessage());
+		}
 		
-				// Convert address to latitude and longitude
-				this.latitude = this.getLatitude(address);
-				this.longitude = this.getLongitude(address);
-							
-			
-		}catch(Exception e){Log.d("WASTL", e.getMessage());}
-		*/
+		
 		this.handler.sendEmptyMessage(0);
 	}
+	
+	private FireDepartmentEntity getDataFromCursor(Cursor _cursor)
+	{
+		if(_cursor.getCount() > 1)		
+			return null;
+		else
+		{
+			FireDepartmentEntity entity = new FireDepartmentEntity();
+			
+			entity.setFireDepartmentDistrictID(this.mDistrictId);
+			entity.setFireDepartmentId(_cursor.getInt(_cursor.getColumnIndex(DatabaseFacade.GetColumnFdId())));
+			entity.setFireDepartmentName(_cursor.getString(_cursor.getColumnIndex(DatabaseFacade.GetColumnFdName())));
+			entity.setFireDepartmentLocation(_cursor.getString(_cursor.getColumnIndex(DatabaseFacade.GetColumnFdLocation())));
+			entity.setFireDepartmentPhoneNumber(_cursor.getString(_cursor.getColumnIndex(DatabaseFacade.GetColumnFdPhoneNumber())));
+			
+			return entity;
+		}
+	}
+	
 	private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-        	progressDialog.dismiss();
+        	mProgressDialog.dismiss();
                       
-        	setMobilePhoneNumber(phoneNumber);
-        	setLocationText(address);
-        	
-        	// Check if the conversion was successful and 
-        	// set the mapView with the converted latitude and longitude
-    		if(latitude != -1 && longitude != -1)
-    			setMapView(latitude, longitude);
-    		
-    		List<Overlay> mapOverlays = mapView.getOverlays();
-    		Drawable drawable = getResources().getDrawable(R.drawable.logo_place);
-    		FireDepartmentItemizedOverlay itemizedoverlay = new FireDepartmentItemizedOverlay(drawable);
-    		
-    		GeoPoint point = new GeoPoint((int)(latitude * 1e6),(int)(longitude * 1e6));
-    		
-    		OverlayItem overlayitem = new OverlayItem(point, "Feuerwehr", selectedItemText);
-    		
-    		itemizedoverlay.addOverlay(overlayitem);
-    		mapOverlays.add(itemizedoverlay);
-    		
-    			mapView.setVisibility(0);    			
+        	setMobilePhoneNumber(mEntity.getFireDepartmentPhoneNumber());
+        	setLocationText(mEntity.getFireDepartmentLocation());
+        	setFireDepartment(mEntity.getName());
     		
         }
 	};
@@ -167,10 +135,6 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
 		Linkify.addLinks(tvMobilePhone, Linkify.PHONE_NUMBERS);
 	}
 	
-	@Override
-	protected boolean isRouteDisplayed() {			
-		return false;
-	}
 	// retrieves the longitude for a specific address
 	private double getLatitude(String _address)
 	{
@@ -188,7 +152,7 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
 			return latitude;
 			
 		} catch (IOException e) {
-			Log.d("WASTL", "Unable to convert address");
+			Log.d(AppFacade.GetTag(), "Unable to convert address to latitude");
 			return -1;
 		}					
 	}
@@ -207,42 +171,12 @@ public class FireDepartmentInfoActivity extends com.google.android.maps.MapActiv
 			return longitude;
 			
 		} catch (IOException e) {
-			Log.d("WASTL", "Unable to convert address");
+			Log.d(AppFacade.GetTag(), "Unable to convert address to longitude");
 			return -1;
 		}	
 	}
-	// Sets the MapView
-	private void setMapView(double _latitude, double _longitude)
-	{
-		GeoPoint point = new GeoPoint(
-	            (int) (_latitude * 1E6), 
-	            (int) (_longitude * 1E6));
-	 
-		this.mapController.setCenter(point);
-		this.mapController.setZoom(17);
-		this.mapView.invalidate();
-	}	
-}
-class FireDepartmentItemizedOverlay extends ItemizedOverlay<OverlayItem>
-{
-	private ArrayList<OverlayItem> mapOverlays = new ArrayList<OverlayItem>();	
 	
-	public FireDepartmentItemizedOverlay(Drawable defaultMarker) {
-		super(boundCenterBottom(defaultMarker));	
-	}
+	public double getLatitude() { return this.mLatitude; }
 	
-	public void addOverlay(OverlayItem overlay) {
-		mapOverlays.add(overlay);
-	    populate();
-	}
-	
-	@Override
-	protected OverlayItem createItem(int i) {
-		return mapOverlays.get(i);
-	}
-
-	@Override
-	public int size() {
-		return mapOverlays.size();
-	}		
+	public double getLongitude() { return this.mLongitude; }
 }

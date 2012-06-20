@@ -5,6 +5,7 @@ import com.ithtl.essapp.R;
 import com.wastl.AppFacade;
 import com.wastl.Database.DatabaseFacade;
 import com.wastl.Database.FireDepartments;
+import com.wastl.EventListener.EventListener_BrowseFireDepartmentsActivity;
 
 // Android
 import android.app.Activity;
@@ -31,6 +32,7 @@ public class BrowseFireDepartmentsActivity extends Activity implements Runnable 
 	private ListView mListView = null;
 	private long mDistrictId = 0;
 	private Cursor mCursor = null;
+	private EventListener_BrowseFireDepartmentsActivity mEventListener_BrowseFireDepartments = null;
 
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);      
@@ -52,12 +54,15 @@ public class BrowseFireDepartmentsActivity extends Activity implements Runnable 
         this.mListView = (ListView)this.findViewById(R.id.listView_Content);        
         this.mProgressDialog = ProgressDialog.show(this, "", "Daten werden gelesen", true);
         this.mDistrictId = this.getIntent().getExtras().getLong(AppFacade.GetExId());
+        
+        this.mEventListener_BrowseFireDepartments = new EventListener_BrowseFireDepartmentsActivity(this);
+        this.mEventListener_BrowseFireDepartments.setEvents();
 	}
 	
 	public void run()
 	{		
 		FireDepartments fireDepartments = new FireDepartments(this);
-		this.mCursor = fireDepartments.fetchRelatedFireDepartment(this.mDistrictId);
+		this.mCursor = fireDepartments.fetchRelatedFireDepartments(this.mDistrictId);
 		this.startManagingCursor(this.mCursor);
 		
         this.handler.sendEmptyMessage(0);
@@ -80,4 +85,9 @@ public class BrowseFireDepartmentsActivity extends Activity implements Runnable 
         	
         }
 	};
+	
+	public long getDistrictId()
+	{
+		return this.mDistrictId;
+	}
 }
