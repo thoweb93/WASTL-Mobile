@@ -18,6 +18,7 @@ import android.os.Message;
 import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 /**
  * Downloads and displays details about a given district.
@@ -37,7 +38,9 @@ public class MissionDetailsActivity extends Activity implements Runnable {
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        /* Set content and title */
         this.setContentView(R.layout.list_view);
+        ((TextView)this.findViewById(R.id.textView_Title)).setText("Aktuelle Einsätze im Bezirk");
         
         /* Initialize objects and retrieve extra */
         this.initializeObjects();
@@ -53,9 +56,7 @@ public class MissionDetailsActivity extends Activity implements Runnable {
         this.mListView = (ListView) this.findViewById(R.id.listView_Content);
         
         Hierarchy districtHierarchy = new Hierarchy();
-        String test = this.getIntent().getExtras().getString(AppFacade.GetExDetails());
-        Log.d(AppFacade.GetTag(), test);
-		this.mEntity = districtHierarchy.getDistrict(test);
+		this.mEntity = districtHierarchy.getDistrict(this.getIntent().getExtras().getString(AppFacade.GetExDetails()));
 	}
 	
 	private void loadData()
