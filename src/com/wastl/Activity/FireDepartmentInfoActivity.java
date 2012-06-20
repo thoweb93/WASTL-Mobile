@@ -42,10 +42,15 @@ public class FireDepartmentInfoActivity extends Activity implements Runnable
 	
 	public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fire_department_info);
         
+        /* Set content and title */
+        setContentView(R.layout.fire_department_info);
+        ((TextView)this.findViewById(R.id.textView_Title)).setText("Weitere Informationen");
+        
+        /* Initiate objects and retrieve extra */
         this.initializeObjects();                
         
+        /* Query database and display the retrieved information */
 		this.loadData();
 	}
 	
@@ -53,11 +58,12 @@ public class FireDepartmentInfoActivity extends Activity implements Runnable
 	{
 		this.mDistrictId = this.getIntent().getExtras().getLong(AppFacade.GetExId());
 		this.mFId = this.getIntent().getExtras().getLong(AppFacade.GetExFId());
+		this.mProgressDialog = ProgressDialog.show(this, "", "Daten werden gelesen", true);
 	}
 	// show the progress dialog and start a tread to read the clicked fire department.
 	private void loadData()
 	{
-		this.mProgressDialog = ProgressDialog.show(this, "", "Daten werden gelesen", true);
+		
 		
 		Thread thread = new Thread(this);
 		thread.start();
@@ -113,7 +119,7 @@ public class FireDepartmentInfoActivity extends Activity implements Runnable
 	
 	private void setFireDepartment(String _fireDepartment)
 	{
-		TextView tvFireDepartment = (TextView)this.findViewById(R.id.tvFireDepartment);
+		TextView tvFireDepartment = (TextView)this.findViewById(R.id.textView_FireDepartment);
 		
 		tvFireDepartment.setText(_fireDepartment);
 	}

@@ -15,6 +15,13 @@ import com.google.android.maps.OverlayItem;
 import com.ithtl.essapp.R;
 import com.wastl.AppFacade;
 
+/**
+ * This class is a MapActivity, it contains a mapview and displays the location of a given latitude and longitude.
+ * 
+ * @author Lukas Bernreiter
+ * @version 1.3, 20/06/2012
+ * @since 1.3
+ */
 public class FireDepartmentMapActivity extends com.google.android.maps.MapActivity 
 {
 	private MapView mMapView = null;
@@ -28,8 +35,7 @@ public class FireDepartmentMapActivity extends com.google.android.maps.MapActivi
         setContentView(R.layout.fire_department_map);
         
         this.initializeObjects();                
-        
-        this.mMapView.setBuiltInZoomControls(true);
+                
 		
         this.displayData(this.mLatitude, this.mLongitude);
 	}
@@ -40,7 +46,8 @@ public class FireDepartmentMapActivity extends com.google.android.maps.MapActivi
 		this.mLongitude = this.getIntent().getExtras().getDouble(AppFacade.GetExLong());
 		this.mName = this.getIntent().getExtras().getString(AppFacade.GetExName());
 		
-		this.mMapView 			= (MapView) this.findViewById(R.id.mapview);		
+		this.mMapView 			= (MapView) this.findViewById(R.id.mapview);
+		this.mMapView.setBuiltInZoomControls(true);
 		this.mMapController 	= mMapView.getController();
 	}
 	

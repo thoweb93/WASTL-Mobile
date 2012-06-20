@@ -38,31 +38,29 @@
 
         </RelativeLayout>
         
-    <TextView 
-    	android:textAppearance="?android:attr/textAppearanceLarge" 
+    <TextView style="@android:style/TextAppearance.Large"
+    	android:textStyle="bold" 
     	android:layout_width="match_parent" 
     	android:gravity="center_vertical|center_horizontal" 
     	android:layout_height="58dp" 
     	android:textColor="#b22222"
-    	android:id="@+id/tvFireDepartment"
+    	android:id="@+id/textView_FireDepartment"
     	android:layout_below="@id/RLayout_Title" />
-
-	 
-	    <TextView  
-	        android:layout_width="fill_parent" 
+	
+	    <TextView android:id="@+id/textView_Location"  
+	        android:layout_width="wrap_content" 
 	        android:layout_height="wrap_content"
+	        android:layout_below="@id/textView_FireDepartment"
 	        android:padding="15dp"
 	    	android:textSize="18sp"
-	        android:textColor="#000000"
-	        android:id="@+id/textView_Location"
-	    />
-	    <TextView  
-	        android:layout_width="fill_parent" 
+	        android:textColor="#000000" />
+	    
+	    <TextView  android:id="@+id/textView_MobilePhone"
+	        android:layout_width="wrap_content" 
 	        android:layout_height="wrap_content"
+	        android:layout_below="@id/textView_Location"
 	        android:padding="15dp"
 	    	android:textSize="18sp" 
-	        android:textColor="#000000"
-	        android:id="@+id/textView_MobilePhone"
-	    />      
+	        android:textColor="#000000" />      
 
 </RelativeLayout>
